@@ -1,0 +1,43 @@
+.topline {
+    position: fixed;
+    background-color: rgb(3, 0, 12);
+    height: 20px;
+    width: 100%;
+    top: 0px;
+    color: white;
+    
+}
+
+.sed {
+    position: fixed;
+    top: 0px;
+    right: 10px;
+}
+
+.navbar {
+    list-style: none;
+}
+
+.search {
+    width: 504px;
+    height: 67px;
+    left: 1104px;
+    top: 679px;
+
+    background: #FFFFFF;
+    border: 1px solid #F5F5F5;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+
+}
+
+.bottomline {
+    position: fixed;
+    background-color: rgb(3, 0, 12);
+    height: 20px;
+    width: 100%;
+    bottom: 0px;
+    color: white;
+    
+}
