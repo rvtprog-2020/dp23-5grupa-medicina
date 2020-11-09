@@ -1,0 +1,9 @@
+.navigationUL {
+    display:inline-flex;
+    background-color:#A0D2EB;
+    width:100%;
+    margin-bottom:2px;
+}
+.navbarTEXT {
+    padding-left:10px;
+}

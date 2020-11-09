@@ -1,22 +1,31 @@
 .topline {
     position: fixed;
-    background-color: rgb(3, 0, 12);
-    height: 20px;
+    background-color: #12232E;
     width: 100%;
     top: 0px;
     color: white;
-    
+    height: 31px;   
 }
-
-.sed {
+.pies {
     position: fixed;
-    top: 0px;
+    margin-top:8px;
     right: 10px;
+    color:white;
+}
+.navigationUL {
+    display:inline-flex;
+    background-color:#A0D2EB;
+    width:100%;
+    margin-bottom:2px;
+    text-align:center;
+    height:31px;
+    padding-left:10px;
 }
 
-.navbar {
-    list-style: none;
+.alert {
+    font-size:24px;
 }
+
 
 .search {
     width: 504px;
@@ -31,13 +40,18 @@
     border-radius: 40px;
 
 }
-
 .bottomline {
     position: fixed;
-    background-color: rgb(3, 0, 12);
-    height: 20px;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    bottom: 0px;
+    background-color: #12232E;
+    height: 32px;
+    width: 100%;
     color: white;
-    
+    text-align: center;
 }
+
+
+
+

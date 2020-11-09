@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="style" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='vizites.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='base.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='aktualitates.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:#EEFBFB">
+    <div class="topline">
+        <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='#'>pieslēgties</a>)</h6>
+    </div>
+    <div class="container">
+    <div class="title"><h1>E-veselība</h1><a>Piektdiena, 2020 gada 6. novembris</a></div>
+    <div class="middleline"></div>
+    <div class="container">
+    <div class="navigation">
+        <ul class="navigationUL">
+                <!-- Links -->
+
+                <h6 {% if acitve_page == 'home'%} class="active" {% endif %}>
+                    <a class="navbarTEXT"href='/'>Aktualitātes</a>
+                </h6>
+                <h6 {% if acitve_page == 'slimnicas'%} class="active" {% endif %}>
+                    <a class="navbarTEXT"href='/slimnicas'>Slimnīcu saraksts</a>
+                </h6>
+
+                <!-- Dropdown -->
+                        <h6 class="nav-item dropdown">
+                        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="navbarTEXT">Vizites</a>
+                        </span>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul>
+                            <a class="dropdown-item" href="/pieteiktviz">Pieteikt vīziti</a>
+                            <a class="dropdown-item" href="/manasviz">Manas vizītes</a>
+                        </ul>
+                        </h6>
+                    </h6><h6 {% if acitve_page == 'kontakti'%} class="active" {% endif %}>
+                        <a class="navbarTEXT"href='/kontakti'>Kontakti</a>
+                    </h6>
+                <!-- Links -->
+        </ul>
+    </div>
+        <div class="alert alert-warning center-block" role="alert">
+            <h style="color:black;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros. Uzzināt vairāk...</h>
+        </div>
+{% block content %}
+
+{% endblock %}
+    </div>
+    <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>
+    <script src="./script.js"></script>        
+</body>
+</html>
