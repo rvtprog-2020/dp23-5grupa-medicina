@@ -1,3 +1,9 @@
+.navbarTEXT:hover {
+    color:red;
+    text-decoration: none;
+    outline: 0;
+}
+
 .topline {
     position: fixed;
     background-color: #12232E;
@@ -12,6 +18,11 @@
     right: 10px;
     color:white;
 }
+.title {
+    background-color: #4DA8DA;
+    padding: 15px;
+    border-bottom: 8px solid #203647;
+}
 .navigationUL {
     display:inline-flex;
     background-color:#A0D2EB;
@@ -25,14 +36,11 @@
 .alert {
     font-size:24px;
 }
-
-
 .search {
     width: 504px;
     height: 67px;
     left: 1104px;
     top: 679px;
-
     background: #FFFFFF;
     border: 1px solid #F5F5F5;
     box-sizing: border-box;
@@ -51,7 +59,3 @@
     color: white;
     text-align: center;
 }
-
-
-
-
