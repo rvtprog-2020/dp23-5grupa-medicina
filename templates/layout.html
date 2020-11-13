@@ -17,7 +17,7 @@
 </head>
 <body style="background-color:#EEFBFB">
     <div class="topline">
-        <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='#'>pieslēgties</a>)</h6>
+        <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='/login'>pieslēgties</a>)</h6>
     </div>
     <div class="container">
         <div class="title">
@@ -28,29 +28,39 @@
     
     <div class="navigation">
         <ul class="navigationUL">
-                <!-- Links -->
-
-                <h6 {% if acitve_page == 'home'%} class="active" {% endif %}>
-                    <a class="navbarTEXT"href='/'>Aktualitātes</a>
-                </h6>
-                <h6 {% if acitve_page == 'slimnicas'%} class="active" {% endif %}>
-                    <a class="navbarTEXT"href='/slimnicas'>Slimnīcu saraksts</a>
-                </h6>
+                <!-- Links -->            
+                <div class= "a1">
+                        <h6 {% if active_page == 'aktualitātes'%} class="active" {% endif %}>
+                            <a class="navbarTEXT"href='/'>Aktualitātes</a>
+                        </h6>
+                </div>
+                <div class= "a2">
+                    <h6 {% if active_page == 'slimnicas'%} class="active" {% endif %}>
+                        <a class="navbarTEXT"href='/slimnicas'>Slimnīcu saraksts</a>
+                    </h6>
+                </div>
 
                 <!-- Dropdown -->
-                        <h6 class="nav-item dropdown">
+
+                <div class="a3">
+                    <h6  class="nav-item dropdown">
                         <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <a class="navbarTEXT">Vizītes</a>
                         </span>
+
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <ul>
                             <a class="dropdown-item" href="/pieteiktviz">Pieteikt vizīti</a>
                             <a class="dropdown-item" href="/manasviz">Manas vizītes</a>
                         </ul>
-                        </h6>
-                    </h6><h6 {% if acitve_page == 'kontakti'%} class="active" {% endif %}>
-                        <a class="navbarTEXT"href='/kontakti'>Kontakti</a>
                     </h6>
+                </div>
+                
+                <div class= "a4">
+                        <h6  {% if active_page == 'kontakti'%} class="active" {% endif %}>
+                            <a class="navbarTEXT"href='/kontakti'>Kontakti</a>
+                        </h6>
+                </div>
                 <!-- Links -->
         </ul>
     </div>

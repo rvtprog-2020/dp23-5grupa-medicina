@@ -1,7 +1,32 @@
-.navbarTEXT:hover {
-    color:red;
+.a1,.a2,.a3,.a4 {
+    padding-left:6px;
+    padding-right:6px;
+
+}
+.active > a.navbarTEXT, .navbarTEXT:hover {
+    padding-top: 9px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    border-bottom: 3px solid #12232E;
+}
+.active > a.navbarTEXT {
+    background-color:#abd5eb;
+}
+.navbarTEXT:hover, .navbarTEXT:active, .navbarTEXT:focus {
     text-decoration: none;
     outline: 0;
+    color:white;
+    font-weight: bold;
+}
+.navbarTEXT {
+    color:white;
+    font-weight: bold;
+    padding-top: 9px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+
 }
 
 .topline {
