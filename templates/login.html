@@ -1,12 +1,15 @@
 {% extends 'layout.html' %}
 {% set active_page = 'login' %}
 {% block content %}
-<div>
-  <h6>Pieslēgšanās portālā</h6>
-  <h6>Lietotājvārds</h6>
-  <input type="text" class="login">
-  <h6>Parole</h6>
-  <input type="text" class="password">
-  <button>Pieslēgties</button>
+<div style="padding-bottom:10px;">
+  <h3 style="color:gray; text-decoration:underline;">Pieslēgšanās portālā</h3>
+  <h5 style="font-size:17px; color:darkslategray;">Lietotāja vārds</h5><input type="text" id="loginVards">
+  <h5 style="font-size:17px; color:darkslategray;">parole</h5><input type="password" id="loginParole">
 </div>
+<button id="loginSubmit" class="btn btn-primary">Pieslēgties</button>
+<div style="padding-top:18px;">
+  <a href="/" style="text-decoration:underline; padding-right:10px;">aizmirsu paroli</a>
+  <a href="/register" style="text-decoration:underline;">reģistrēties</a>
+</div>
+<script src="static/script.js"></script>
 {% endblock %}

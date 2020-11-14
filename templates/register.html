@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% set active_page = 'login' %}
+{% block content %}
+<!--REĢISTRĀCIJA IR WORK IN PROGRESS LMAO, JA KĀDAM
+IR CITAS IDEJAS KĀ VAR ŠO UZTAISĪT TAD DROŠI EDITOJAT-->
+<h3 style="color:gray; text-decoration:underline;">Reģistrācija portālā</h3>
+  <h4>Vārds</h4><input id="regVards" type="text">
+  <h5>Parole</h5><input id="regPassword" type="password">
+  <div>
+    <button class="btn btn-primary" id="register">Reģistrēties</button>
+  </div>
+  <script src="static/script.js"></script>
+{% endblock %}

@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('aktualitātes.html')
+    return render_template('Aktualitātes.html')
 
 @app.route('/slimnicas')
 def slimnicas():
