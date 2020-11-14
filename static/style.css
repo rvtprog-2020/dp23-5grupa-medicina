@@ -28,7 +28,6 @@
     padding-left: 6px;
 
 }
-
 .topline {
     position: fixed;
     background-color: #12232E;
@@ -83,4 +82,28 @@
     width: 100%;
     color: white;
     text-align: center;
+}
+p {
+    font-size: 18px;
+    font-weight:lighter;
+    position: absolute;
+    top: auto;
+}
+
+p::after {
+    content: attr(data-end) ;
+    color: red ;
+}
+.box {
+    display: flex;
+    margin:11px;
+}
+#regLietVards, #regVards, #regUzvards, #regPerkods, #regPassword, #regEpasts, #regTalr{
+    margin-left:156px;
+}
+
+hr { 
+    background-color: red; 
+    height: 1px; 
+    border: 0;
 }
