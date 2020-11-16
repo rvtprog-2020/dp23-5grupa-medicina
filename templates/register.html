@@ -3,34 +3,33 @@
 {% block content %}
 <!--REĢISTRĀCIJA IR WORK IN PROGRESS LMAO, JA KĀDAM
 IR CITAS IDEJAS KĀ VAR ŠO UZTAISĪT TAD DROŠI EDITOJAT-->
-<h3 style="margin-left: 10px;">Reģistrācija portālā</h3>
-<hr>
+
 <div class="box">
-  <p data-end="*">Lietotāja vārds</p><input id="regLietVards" type="text">
+  <p data-end="*">Lietotāja vārds</p><input id="regLietotajaVards" name="regLietotajaVards" type="text">
 </div>
 <div class="box">
-  <p data-end="*">Vārds</p><input id="regVards" type="text">
+  <p data-end="*">Vārds</p><input id="regVards" name="regVards" type="text">
 </div>
 <div class="box">
   <p data-end="*">Uzvārds</p><input id="regUzvards" type="text">
 </div>
 <div class="box">
-  <p data-end="*">Personas kods</p><input id="regPerkods" type="text">
+  <p data-end="*">Personas kods</p><input id="regPersonaskods"  type="text">
 </div>
 <div class="box">
-  <p data-end="*">Parole</p><input id="regPassword" type="password">
+  <p data-end="*">Parole</p><input id="regParole" type="password">
 </div>
 <div class="box">
-  <p data-end="*">Parole atkārtoti</p><input id="regPassword" type="password">
+  <p data-end="*">Parole atkārtoti</p><input id="regParoleAtkartoti" type="password">
 </div>
 <div class="box">
   <p data-end="*">E-pasts</p><input id="regEpasts" type="text">
 </div>
 <div class="box">
-  <p data-end="*">Tālrunis</p><input id="regTalr" type="text">
+  <p data-end="*">Tālrunis</p><input id="regTalrunis" type="text">
 </div>
   <div>
-    <button class="btn btn-primary" id="register">Reģistrēties</button>
+    <button type="submit" class="btn btn-primary" id="register">Reģistrēties</button>
   </div>
-  <script src="static/script.js"></script>
+  <script src="static/register.js"></script>
 {% endblock %}

@@ -7,11 +7,12 @@
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="script" type="text/script" href="{{url_for('static', filename='script.js')}}">
+    <link rel="script" type="text/script" href="{{url_for('static', filename='zinas.js')}}">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color:#EEFBFB">
+<body style="background-color:#EEFBFB; height:1000px;">
     <div class="topline">
         <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='/login'>pieslēgties</a>)</h6>
     </div>
@@ -51,12 +52,26 @@
                         </ul>
                     </h6>
                 </div>
+                <div class="a7">
+                    <h6  class="nav-item dropdown">
+                        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="navbarTEXT">Admin</a>
+                        </span>
                 
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul>
+                            <a class="dropdown-item" href="/adminPanel2">Admin</a>
+                            <a class="dropdown-item" href="/adminPanelSlimnicas">Admin panel</a>
+                        </ul>
+                    </h6>
+                </div>
+
+       
                 <div class= "a4">
                         <h6  {% if active_page == 'kontakti'%} class="active" {% endif %}>
                             <a class="navbarTEXT"href='/kontakti'>Kontakti</a>
                         </h6>
-                </div>
+ 
                 <!-- Links -->
         </ul>
     </div>
@@ -67,7 +82,9 @@
 
 {% endblock %}
     </div>
-    <!-- <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>     -->
+    <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>    
 </body>
 </html>
+<!--es jūs mīlu-->
+
 <!--Nepievienojat javascript pie templates, ja jūs gribat izsaukt js failu tad lietojat "<script src="static/script.js"></script>"-->
