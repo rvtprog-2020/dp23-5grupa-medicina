@@ -1,12 +1,18 @@
-let datums = document.getElementById("datums");
-let virsraksts = document.getElementById("virsraksts");
+let button = document.getElementById("zinasAdd");
 let bilde = document.getElementById("bilde");
-let zinasAdd = document.getElementById("zinasAdd");
+let virsraksts = document.getElementById("virsraksts");
 let zinas = document.getElementById("zinas");
-console.log("datums")
-zinasAdd.addEventListener("click", function(){
-    zinas.innerHTML ="<li> <h4>5. novembris</h4> <img src="+bilde+"> </li>"
-    datums.value = "";
-    virsraksts.value = "";
-    bildesUrl.value = "";
+let datums = document.getElementById("datums");
+button.addEventListener("click", function(){
+    //foratejums
+    let datumsValue = "<h5 style='text-color:gray;'>"+datums.value+"<h5>"
+    let bildeValue = "<img src="+bilde.value+" style='height:100px;'>"
+        
+        //izvada visu kas tika izveidots augsa:
+            let kopa = datumsValue + bildeValue
+            let jaunsElements = document.createElement("li")
+            jaunsElements.innerHTML = kopa;
+            zinas.appendChild(jaunsElements);
+            console.log("vēl strādā")
+            
 });
