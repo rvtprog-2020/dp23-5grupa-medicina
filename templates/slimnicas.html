@@ -2,4 +2,60 @@
 {% set active_page = 'slimnicas' %}
 {% block content %}
     <h1>Slimnīcu saraksts</h1>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+    <div id="map" style="width: 500px; height: 400px;"></div>
+
+    <script type="text/javascript">
+      var locations = [
+        ['Paula StradiÅ†a KlÄ«niskÄ universitÄtes slimnÄ«ca', 56.932245, 24.065944],
+        ['BÄ“rnu klÄ«niskÄ universitÄtes slimnÄ«ca', 56.922478, 24.086314],
+        ['RÄ«gas 2. slimnÄ«ca', 56.916434, 24.090990],
+        ['Bikur Holim SlimnÄ«ca', 56.938520, 24.141515],
+        ['Daktera KuzÅ†ecova klÄ«nika "Acu mikroÄ·irurÄ£ijas centrs"', 56.942256, 24.135581],
+        ['AJKC', 56.953303, 24.119788],
+        ['RÄ«gas 1. slimnÄ«ca', 56.932245, 24.065944],
+        ['TraumatoloÄ£ijas un ortopÄ“dijas slimnÄ«ca', 56.983247, 24.138156],
+        ['Latvijas JÅ«ras medicÄ«nas centrs', 56.989420, 24.136954],
+        ['Tuberkulozes un plauÅu slimÄ«bu centrs, RÄ«gas ambulatorÄ nodaÄ¼a', 56.970501, 24.199431],
+        ['Latvijas OnkoloÄ£ijas centrs', 56.966541, 24.242229],
+        ['BÄ“rnu klÄ«niskÄ universitÄtes slimnÄ«ca, konsultatÄ«vÄ poliklÄ«nika', 56.959294, 24.253637],
+        ['Tuberkulozes un plauÅu slimÄ«bu centrs, RÄ«gas ambulatorÄ nodaÄ¼a', 56.970501, 24.199431],
+        ['Daugavpils ReÄ£ionÄlÄ slimnÄ«ca', 55.898332, 26.592149],
+        ['LiepÄjas reÄ£ionÄlÄ slimnÄ«ca', 56.552571, 21.099728],
+        ['Jelgavas pilsÄ“tas slimnÄ«ca, SIA', 56.657330, 23.749726],
+        ['ZiemeÄ¼kurzemes reÄ£ionÄlÄ slimnÄ«ca', 57.387562, 21.544570],
+        ['SIA RÄ“zeknes slimnÄ«ca', 56.507934, 27.342867],
+        ['Vidzemes slimnÄ«ca', 57.518697, 25.384815],
+        ['Ogres rajona slimnÄ«ca', 56.819603, 24.619738],
+        ['JÄ“kabpils reÄ£ionÄlÄ slimnÄ«ca', 56.497336, 25.841377],
+        ['JÅ«rmalas slimnÄ«ca', 56.980826, 23.858490],
+      ];
+  
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: new google.maps.LatLng(56.946155, 24.098370),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+  
+      var infowindow = new google.maps.InfoWindow();
+  
+      var marker, i;
+  
+      for (i = 0; i < locations.length; i++) {  
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          map: map
+        });
+  
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
+      }
+    </script>
 {% endblock %}

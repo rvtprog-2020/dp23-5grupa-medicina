@@ -1,10 +1,38 @@
 {% extends "layout.html" %}
 {% set active_page = 'aktualitātes' %}
 {% block content %}
-<div style="margin-left:200px;">
+<!-- <div style="margin-left:200px;">
     <div class="row">
         <div class="col" style="font-size:xx-large">Aktualitātes</div>
         <input id="aktSearch" type="text" placeholder="meklēt">
     </div>
+</div> -->
+<div style="margin-left:20px;">
+    <div class="row">
+        <div class="col" style="font-size:xx-large">Aktualitātes 
+            <input style="border-radius:20px; font-size:medium; margin-left:300px;" placeholder="meklēt" id="aktSearch" type="text">
+        </div>
+    </div>
 </div>
+<div id="aktualitates"></div>
+<!--ideja ir uztaisīt news feed taka chatu, kjip unordered list iekšā un javascript pašā kjip likt no admin puses variables iekšā kā piemēram datumu, bildes linku un pašu virsrakstu-->
+    <!--zem sejienes ir admina funkcionalitate kura pec default visiem ir hidden bet adminiem shown-->
+    <div>
+        datums <input type="text" id="datums">
+        virsraksts <input type="text" id="virsraksts">
+        bildes url <input type="text" id="bilde">
+        <div style="margin-top:20px; margin-left:10px;">
+            <button style="size:20px;" type="button" id="zinasAdd" >pievienot ziņas</button>
+        </div>  
+    </div>
+    <!--virs sejienes ir admina funkcionalitate kura pec default visiem ir hidden bet adminiem shown-->
+<div>
+    <ul id="zinas">
+        <li> 
+            <h4>5. novembris</h4>
+            <img style="height:100px;" src="https://www.whitehouse.gov/wp-content/uploads/2017/11/President-Trump-Official-Portrait-1024x1297.jpg">
+        </li>
+    </ul>
+</div>
+<script src="static/zinas.js"></script>
 {% endblock %}
