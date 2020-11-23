@@ -2,27 +2,64 @@
 {% set active_page = 'vizites' %}
 {% block content %}
     <h1>Izvēlieties slimnīcu</h1>
-    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid;">
-        <input type="text" style="border-radius: 40px; margin-top: 5px; height: 30px; margin-bottom: 5px; width: 1125px; margin-left: 5px;" placeholder="  Meklēt slimnīcu">
+    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
+        <form>
+            <select style="width: 1125px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <option>Izvēlieties slimnīcu</option>
+            <option>Rīgas stradiņa</option>
+            <option>Rīgas 1.slimnīca</option>
+            <option>Rīgas 2.slimnīca</option>
+            </select>
+        </form>
     </div>
     <h1>Izvēlieties darbības jomu</h1>
-    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid;">
-        <input type="text" style="border-radius: 40px; margin-top: 5px; height: 30px; margin-bottom: 5px; width: 1125px; margin-left: 5px;" placeholder="  Meklēt darbības jomu">
+    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
+        <form>
+            <select style="width: 1125px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <option>Izvēlieties darbības jomu</option>
+            <option>Zobārsts</option>
+            <option>Psihologs</option>
+            <option>Neirologs</option>
+            </select>
+        </form>
     </div>
-    <h1>Izvēlieteis datumu</h1>
-    <div class="container">
-        <div style="width: 500px; height: 200px; background-color:#8AA3BA; border-radius: 5px;">
-            <a href="" style="margin-left: 10px; margin-top: 10px; display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">P</a>
-            <a href="" style="display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">O</a>
-            <a href="" style="display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">T</a>
-            <a href="" style="display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">C</a>
-            <a href="" style="display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">Pk</a>
-            <a href="" style="display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">S</a>
-            <a href="" style="display:inline-block;width:30px;height:30px;background-color:#ccc;border:1px solid #ff0000;">Sv</a>
-        </div>
+    <h1>Izvēlieties datumu</h1>
+    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px;">
+        <form>
+            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <option>Izvēlieties dienu</option>
+            <option>Pirmdiena</option>
+            <option>Otrdiena</option>
+            <option>Trešdiena</option>
+            <option>Ceturtdiena</option>
+            <option>Piektdiena</option>
+            <option>Sestdiena</option>
+            <option>Svētdiena</option>
+            </select>
+        </form>
+    </div>
+    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
+        <form>
+            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <option>Izvēlieties laiku</option>
+            <option>8:00</option>
+            <option>9:00</option>
+            <option>10:00</option>
+            <option>11:00</option>
+            <option>12:00</option>
+            <option>13:00</option>
+            <option>14:00</option>
+            <option>15:00</option>
+            <option>16:00</option>
+            <option>17:00</option>
+            <option>18:00</option>
+            <option>19:00</option>
+            <option>20:00</option>
+            </select>
+        </form>
     </div>
     <div class="zina" style="width: 1125px; height: 100px; background-color:red;margin-left: 50px;">
         <h2>Uzmanību!</h2>
-        <p>Ejot pie daktera</p>
+        <p>Ejot pie daktera jābūt personas apliecinošiem dokumentiem.</p>
     </div>
 {% endblock %}

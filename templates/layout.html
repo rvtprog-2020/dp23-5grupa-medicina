@@ -12,14 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color:#EEFBFB; height:1000px;">
+<body class="parlized">
+
     <div class="topline">
         <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='/login'>pieslēgties</a>)</h6>
     </div>
     <div class="container">
         <div class="title">
             <h1 style="color: white; font-size:72px;">E-veselība</h1>
-            Piektdiena, 2020 gada 6. novembris
+            Piektdiena, 2020 gada 23. novembris
         </div>
     <div class="middleline"></div>
     
@@ -38,7 +39,6 @@
                 </div>
 
                 <!-- Dropdown -->
-
                 <div class="a3">
                     <h6  class="nav-item dropdown">
                         <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,9 +61,11 @@
                 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <ul>
-                            <a class="dropdown-item" href="/adminPanel2">Admin</a>
+                            <a class="dropdown-item" href="/adminPanel2">Admin1</a>
                             <br>
-                            <a class="dropdown-item" href="/adminPanelSlimnicas">Admin panel</a>
+                            <a class="dropdown-item" href="/adminPanelSlimnicas">Admin2</a>
+                            <br>
+                            <a class="dropdown-item" href="/adminPanel3">Admin3</a>
                         </ul>
                     </h6>
                 </div>
@@ -76,16 +78,16 @@
  
                 <!-- Links -->
         </ul>
-    </div>
         <div class="alert alert-warning center-block" role="alert">
             <h style="color:black;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><h href="#"> Uzzināt vairāk...</h>
         </div>
-{% block content %}
+                    
+    {% block content %}
 
-{% endblock %}
-    </div>
-    <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>    
-</body>
+    {% endblock %}
+        </div>
+        <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>    
+    </body>
 </html>
 <!--es jūs mīlu-->
 

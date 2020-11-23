@@ -1,38 +1,40 @@
 {% extends "layout.html" %}
 {% set active_page = 'aktualitātes' %}
 {% block content %}
-<!-- <div style="margin-left:200px;">
-    <div class="row">
-        <div class="col" style="font-size:xx-large">Aktualitātes</div>
-        <input id="aktSearch" type="text" placeholder="meklēt">
-    </div>
-</div> -->
-<div style="margin-left:20px;">
-    <div class="row">
-        <div class="col" style="font-size:xx-large">Aktualitātes 
-            <input style="border-radius:20px; font-size:medium; margin-left:300px;" placeholder="meklēt" id="aktSearch" type="text">
+<div style="background-image:url(https://arpanumedical.com/wp-content/uploads/2017/03/ID_PIC.jpg);">
+    <!-- <div style="margin-left:200px;">
+        <div class="row">
+            <div class="col" style="font-size:xx-large">Aktualitātes</div>
+            <input id="aktSearch" type="text" placeholder="meklēt">
+        </div>
+    </div> -->
+    <div style="margin-left:20px;">
+        <div class="row">
+            <div class="col" style="font-size:xx-large">Aktualitātes 
+                <input style="border-radius:20px; font-size:medium; margin-left:300px;" placeholder="meklēt" id="aktSearch" type="text">
+            </div>
         </div>
     </div>
-</div>
-<div id="aktualitates"></div>
-<!--ideja ir uztaisīt news feed taka chatu, kjip unordered list iekšā un javascript pašā kjip likt no admin puses variables iekšā kā piemēram datumu, bildes linku un pašu virsrakstu-->
-    <!--zem sejienes ir admina funkcionalitate kura pec default visiem ir hidden bet adminiem shown-->
+    <div id="aktualitates"></div>
+    <!--ideja ir uztaisīt news feed taka chatu, kjip unordered list iekšā un javascript pašā kjip likt no admin puses variables iekšā kā piemēram datumu, bildes linku un pašu virsrakstu-->
+        <!--zem sejienes ir admina funkcionalitate kura pec default visiem ir hidden bet adminiem shown-->
+            <button id="adminbutt">admina poga</button>
+        <div style="display:none;" id="adminDiv">
+            datums <input type="text" id="datums">
+            virsraksts <input type="text" id="virsraksts">
+            bildes url <input type="text" id="bilde">
+            <div style="margin-top:20px; margin-left:10px;">
+                <button style="size:20px;" type="button" id="zinasAdd" >pievienot ziņas</button>
+                <button id="tirit" style="display:none;">notīrīt pēdējo ziņu</button>
+            </div>  
+        </div>
+        <!--virs sejienes ir admina funkcionalitate kura pec default visiem ir hidden bet adminiem shown-->
     <div>
-        datums <input type="text" id="datums">
-        virsraksts <input type="text" id="virsraksts">
-        bildes url <input type="text" id="bilde">
-        <div style="margin-top:20px; margin-left:10px;">
-            <button style="size:20px;" type="button" id="zinasAdd" >pievienot ziņas</button>
-        </div>  
+        <ul id="zinas" style="list-style:none;">
+            <li> 
+            </li>
+        </ul>
     </div>
-    <!--virs sejienes ir admina funkcionalitate kura pec default visiem ir hidden bet adminiem shown-->
-<div>
-    <ul id="zinas" style="list-style:none;">
-        <li> 
-            <h4>5. novembris</h4>
-            <img style="height:100px;" src="https://www.whitehouse.gov/wp-content/uploads/2017/11/President-Trump-Official-Portrait-1024x1297.jpg">
-        </li>
-    </ul>
+    <script src="static/zinas.js"></script>
 </div>
-<script src="static/zinas.js"></script>
 {% endblock %}

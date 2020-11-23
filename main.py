@@ -1,4 +1,4 @@
-from flask import Flask , render_template , request 
+from flask import Flask, render_template, redirect, url_for, request
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,6 +12,10 @@ def slimnicas():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/login', methods = ["POST"])
+def checklogin():
+    loginVards = request.form['loginVards']
 
 @app.route('/register')
 def register():
@@ -36,8 +40,6 @@ def user(id):
     else:
         return {"error":"User not found!"}
 
-
-
 @app.route('/vizites')
 def vizites():
     return render_template('vizites.html')
@@ -58,7 +60,12 @@ def kontakti():
 def adminPanel2():
     return render_template('adminPanel2.html')
 
+@app.route('/adminPanel3')
+def adminPanel3():
+    return render_template('adminPanel3.html')
+
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
     return render_template('adminPanelSlimnicas.html')
+    
 app.run(host="0.0.0.0", port=80, debug=True)
