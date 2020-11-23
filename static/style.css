@@ -150,4 +150,25 @@ hr {
     background-repeat: no-repeat;
     border-radius: 8px;
     padding-right: 100px;
+    
+}
+.nos1 {
+    position: fixed;
+    bottom: 57%;
+}
+.nos2 {
+    position: fixed;
+    bottom: 47%; 
+}
+.search-icon1 {
+    position: fixed;
+    bottom: 45%;
+    height: 30px; 
+    right: 26%;
+}
+.search-icon2 {
+    position: fixed;
+    bottom: 55%;
+    height: 30px; 
+    right: 26%;
 }
