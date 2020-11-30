@@ -16,6 +16,7 @@ def login():
 @app.route('/login', methods = ["POST"])
 def checklogin():
     loginVards = request.form['loginVards']
+    loginParole = request.form['loginParole']
 
 @app.route('/register')
 def register():
