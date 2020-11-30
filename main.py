@@ -61,10 +61,6 @@ def kontakti():
 def adminPanel2():
     return render_template('adminPanel2.html')
 
-@app.route('/adminPanel3')
-def adminPanel3():
-    return render_template('adminPanel3.html')
-
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
     return render_template('adminPanelSlimnicas.html')

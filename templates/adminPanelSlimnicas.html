@@ -1,22 +1,18 @@
 {% extends 'layout.html' %}
 {% set active_page = 'adminPanelSlimnicas' %}
 {% block content %}
-    <h2>Administrātora panelis</h2>
-    <h3>Izvēlies slimnīcu</h3>
-        <div class="adminpanel1">
-            <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="meklēt" id="123Search" type="text">
-            <button class="adminpanel">
-        </div>
-            <br><br>
-    <h3>Izvēlies ārstu</h3>
-        <div class="adminpanel2,3">
-            <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="meklēt" id="123Search" type="text">
-            <button class="adminpanel25">
-        </div>
-    <br><br>
-    <div class="adminbutt">
-        <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Pievienot</button>
-        <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Rediģēt</button>
+<h2>Administrātora panelis</h2>
+<h3>Ievadiet slimnīcas nosaukumu :</h3>
+    <div class="adminpanel1">
+        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas nosaukumu kuru jūs vēletos pievienot" id="12Search" type="text">
     </div>
-
+<br><br>
+<h3>Ievadiet slimnīcas atrašanās vietu :</h3>
+    <div class="adminpanel10">
+        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas atrašanās vietu" id="12Search" type="text">   
+    </div>
+<br><br>
+<div class="adminbutt">
+    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Pievienot</button>
+</div>
 {% endblock %}
