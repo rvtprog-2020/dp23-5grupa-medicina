@@ -65,7 +65,4 @@ def adminPanel2():
 def adminPanelSlimnicas():
     return render_template('adminPanelSlimnicas.html')
 
-
-
-    
 app.run(host="0.0.0.0", port=80, debug=True)
