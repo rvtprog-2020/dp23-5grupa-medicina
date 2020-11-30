@@ -277,13 +277,3 @@ hr {
     border: 1px solid rgb(255, 0, 0); 
     border-radius: 5px;
 }
-body{
-
-    background-size:110%;
-    background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iamexpat.de%2Fexpat-info%2Fgerman-healthcare-system%2Fgeneral-practitioners-gps-doctors-germany&psig=AOvVaw0lbfJjVMGaMBtO576JVt0w&ust=1606222527797000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCrmq_bmO0CFQAAAAAdAAAAABAL);
-    background-repeat: no-repeat;
-    height: 40px;
-    background-color: cyan;
-    border: 1px solid rgb(0, 204, 255); 
-    border-radius: 5px;
-}
