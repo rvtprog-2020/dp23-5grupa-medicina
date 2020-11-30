@@ -4,29 +4,42 @@
     <h1>Izvēlieties slimnīcu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
         <form>
-            <select style="width: 1125px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
             <option>Izvēlieties slimnīcu</option>
-            <option>Rīgas stradiņa</option>
             <option>Rīgas 1.slimnīca</option>
             <option>Rīgas 2.slimnīca</option>
+            <option>Neatliekamāš medicīnas centrs</option>
+            <option>Rīgas Austrumu slimnīca</option>
+            <option>Jūrmalas slimnīca</option>
+            <option>Paula Stradiņa slimnīca</option>
             </select>
         </form>
     </div>
     <h1>Izvēlieties darbības jomu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
         <form>
-            <select style="width: 1125px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none; outline:none;" id="job" name="job">
             <option>Izvēlieties darbības jomu</option>
             <option>Zobārsts</option>
-            <option>Psihologs</option>
+            <option>Psihologs</option>c
             <option>Neirologs</option>
+            <option>Ķirurgs</option>
+            <option>Anesteziologs</option>
+            <option>Endokrinologs</option>
+            <option>Infektologs</option>
+            <option>Podologs</option>
+            <option>Optometrists</option>
+            <option>Masieris</option>
+            <option>Fizioterapēts</option>
+            <option>Urologs</option>
+            <option>Radiologs</option>
             </select>
         </form>
     </div>
     <h1>Izvēlieties datumu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px;">
         <form>
-            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
+            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="date" name="date">
             <option>Izvēlieties dienu</option>
             <option>Pirmdiena</option>
             <option>Otrdiena</option>
@@ -40,33 +53,40 @@
     </div>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
         <form>
-            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px;">
-            <option id="time">Izvēlieties laiku</option>
-            <option>8:00</option>
-            <option>9:00</option>
-            <option>10:00</option>
-            <option>11:00</option>
-            <option>12:00</option>
-            <option>13:00</option>
-            <option>14:00</option>
-            <option>15:00</option>
-            <option>16:00</option>
-            <option>17:00</option>
-            <option>18:00</option>
-            <option>19:00</option>
-            <option>20:00</option>
+            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="time" name="time">
+                <option>Izvēlieties laiku</option>
+                <option>8:00</option>
+                <option>9:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
             </select>
         </form>
     </div>
     <button style="margin-top: 10px;" onclick="Submit()">Pieteikt vizīti</button>
-    <div class="zina" style="width: 1125px; height: 100px; background-color:red;margin-left: 50px;">
+    <div class="zina" style="width: 1000px; height: 100px; background-color:red;margin-left: 50px;">
         <h2>Uzmanību!</h2>
         <p>Ejot pie daktera jābūt personas apliecinošiem dokumentiem.</p>
     </div>
 <script>
 function Submit(){
     let vizitesTime = document.getElementById("time")
-    console.log(vizitesTime)
+    let vizitesDate = document.getElementById("date")
+    let vizitesJob = document.getElementById("job")
+    let vizitesHospital = document.getElementById("hospital")
+    let hospitalValue = vizitesHospital.value
+    let jobValue = vizitesJob.value
+    let dateValue = vizitesDate.value
+    let timeValue = vizitesTime.value
+    console.log(jobValue, hospitalValue, dateValue, timeValue)
 }
 </script>
 {% endblock %}

@@ -1,4 +1,19 @@
 from flask import Flask, render_template, redirect, url_for, request
+from pymongo import MongoClient
+from bson.json_util import dumps
+from bson.objectid import ObjectId
+
+
+client = MongoClient("mongodb+srv://niks:BgizhM1Zh1HYAgw1@dp23-5grupa-medicina.1bqly.mongodb.net/medicina?retryWrites=true&w=majority")
+db = client.medicina
+
+# tabulas / dokumenti
+users_db = db.users
+
+# user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
+# users_db.insert_one(user1)
+# exit()
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -24,20 +39,28 @@ def register():
 
 @app.route('/users')
 def users():
-    return {
-        "data":[
-            {"id":"1", "Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195"},
-            {"id":"2", "Lietotaja vards":"Aligators2", "Vards":"Dainis", "Uzvārds":"Berzins", "Personas kods":"020500-203948", "Parole":"NavigatorsAligators", "E-pasts":"Aligators@inbox.lv", "Talrunis":"27948374"},
-        ]
+    users_data = users_db.find()
+    if users_data:
+        return dumps(users_data)
+    else:
+        return {"error":"No users in DB"}
 
-    }
+    return "1"
+
+@app.route('/user/create', methods = ['POST'])
+def createUser():
+    if request.method == 'POST' and request.content_type == 'application/json':    
+        dati = request.json
+        users_db.insert_one({"vards":dati['vards'], "uzvards":dati['uzvards'], "status":dati['status']})
+        return {"messange":"User created!"}
+    else:
+        return {"error":"Method or content type not supported!"}
 
 @app.route('/user/<id>')
 def user(id):
-    if id == "1":
-        return {"id":"1", "Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"nr", "status":"admin"}
-    elif id == "2":
-        return {"id":"2", "Lietotaja vards":"Aligators2", "Vards":"Dainis", "Uzvārds":"Berzins", "Personas kods":"020500-203948", "Parole":"NavigatorsAligators", "E-pasts":"Aligators@inbox.lv", "Talrunis":"nr", "status":"user"}
+    user = users_db.find_one({"_id":ObjectId(id)})
+    if user:
+        return dumps(user)
     else:
         return {"error":"User not found!"}
 
