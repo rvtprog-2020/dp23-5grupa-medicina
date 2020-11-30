@@ -12,11 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<body style="background-color:#FFE3E0;">
 <body class="parlized">
-
+    
     <div class="topline">
         <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='/login'>pieslēgties</a>)</h6>
     </div>
+
     <div class="container">
         <div class="title">
             <h1 style="color: white; font-size:72px;">E-veselība</h1>
@@ -24,7 +26,7 @@
         </div>
     <div class="middleline"></div>
     
-    <div class="navigation">
+    <div class="navigation" style="background-color:#EEFBFB; height:1000px;">
         <ul class="navigationUL">
                 <!-- Links -->
                 <div class= "a1">
@@ -79,10 +81,12 @@
         <div class="alert alert-warning center-block" role="alert">
             <h style="color:black;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><h href="#"> Uzzināt vairāk...</h>
         </div>
-                    
+    <div style="padding-left:15px;">
     {% block content %}
 
     {% endblock %}
+    </div>
+        </div>
         </div>
         <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>    
     </body>
