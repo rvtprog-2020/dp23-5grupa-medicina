@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% set active_page = 'adminfunctions2' %}
 {% block content %}
+<<<<<<< HEAD
 <h1>Manas vizītes</h1>
 <div style="background-color: rgb(207, 207, 207);border-radius: 10px;">
     <table style="width: 1125px; border: 1px solid black; text-align: center; margin-top: 10px;">
@@ -57,4 +58,34 @@
     tableHTML.innerHTML = " "
   }
 </script>
+=======
+<h2>Administrātora panelis</h2>
+<h3>Ievadiet slimnīcas nosaukumu :</h3>
+    <div class="adminpanel1">
+        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" id="12Search" type="text">
+    </div>
+<br><br>
+<h3>Ievadiet ārsta profesiju :</h3>
+    <div class="adminpanel10">
+        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" id="12Search" type="text">   
+    </div>
+<br><br>
+<h3>Ievadiet ārsta vārdu :</h3>
+    <div class="adminpanel8">
+        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet ārsta vārdu" id="123Search" type="text">
+    </div>
+<br><br>
+<div class="adminbutt">
+    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Pievienot</button>
+    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Rediģēt</button>
+</div>
+<table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
+    <tr style="border: 1px solid black; height: 40px;">
+        <th style="border: 1px solid black; text-align: center;">Nr.</th>
+        <th style="border: 1px solid black; text-align: center;">Slimnīca kurā strāda ārsts</th>
+        <th style="border: 1px solid black; text-align: center;">Specialitāte</th>
+        <th style="border: 1px solid black; text-align: center;">Ārsts</th>
+        <th style="border: 1px solid black; text-align: center;">Ārsta darba laiks</th>
+    </tr>
+>>>>>>> 68d4a91e8cefc49f604955edc98d0145601d79f6
 {% endblock %}
