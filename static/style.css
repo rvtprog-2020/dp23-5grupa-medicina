@@ -24,11 +24,11 @@
     text-decoration: none;
     outline: 0;
     color:white;
-    font-weight: bold;
+
 }
 .navbarTEXT {
     color:white;
-    font-weight: bold;
+
     padding-top: 9px;
     padding-right: 6px;
     padding-bottom: 6px;
@@ -276,4 +276,20 @@ hr {
     background-color:rgb(253, 101, 101);
     border: 1px solid rgb(255, 0, 0); 
     border-radius: 5px;
+}
+
+/* Nika css */
+
+.dropdown-menu {
+    width: 150px;
+}
+.dropdown-item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    font-size: 12px;
+}
+ul {
+    display: inline-grid;
+    padding-left: 20px;
 }

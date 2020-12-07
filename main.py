@@ -1,8 +1,12 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, request, json, jsonify, redirect, session, url_for
+
 from pymongo import MongoClient
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 
+app = Flask(__name__)
+
+app.secret_key = b'\xf0\x14\x9a'
 
 client = MongoClient("mongodb+srv://niks:BgizhM1Zh1HYAgw1@dp23-5grupa-medicina.1bqly.mongodb.net/medicina?retryWrites=true&w=majority")
 db = client.medicina
@@ -14,24 +18,40 @@ users_db = db.users
 # users_db.insert_one(user1)
 # exit()
 
-app = Flask(__name__)
-
 @app.route('/')
 def home():
-    return render_template('Aktualitātes.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('Aktualitātes.html', data = db.test.find(), status = 'admin')
+    return render_template('Aktualitātes.html', data = db.test.find(), status = None)
 
 @app.route('/slimnicas')
 def slimnicas():
-    return render_template('slimnicas.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('slimnicas.html', data = db.test.find(), status = 'admin')
+    return render_template('slimnicas.html', data = db.test.find(), status = None)
 
-@app.route('/login')
+@app.route('/login', methods = ['GET','POST'])
 def login():
+    if request.method == 'POST':
+
+        if request.form.get('login') == 'admin@gmail.com' and request.form.get('password') == 'admin':
+            session['user'] = request.form.get('login')
+            return redirect('/')
+
+
+
+    else:
+        if 'user' in session:
+            return redirect('/')
+
     return render_template('login.html')
 
-@app.route('/login', methods = ["POST"])
-def checklogin():
-    loginVards = request.form['loginVards']
-    loginParole = request.form['loginParole']
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect('/')
 
 @app.route('/register')
 def register():
@@ -64,28 +84,40 @@ def user(id):
     else:
         return {"error":"User not found!"}
 
-@app.route('/vizites')
-def vizites():
-    return render_template('vizites.html')
-
 @app.route('/pieteiktviz')
 def pieteiktviz():
-    return render_template('pieteiktviz.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('pieteiktviz.html', data = db.test.find(), status = 'admin')
+    return render_template('pieteiktviz.html', data = db.test.find(), status = None)
+
 
 @app.route('/manasviz')
 def manasviz():
-    return render_template('manasviz.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('manasviz.html', data = db.test.find(), status = 'admin')
+    return render_template('manasviz.html', data = db.test.find(), status = None)
 
 @app.route('/kontakti')
 def kontakti():
-    return render_template('kontakti.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('kontakti.html', data = db.test.find(), status = 'admin')
+    return render_template('kontakti.html', data = db.test.find(), status = None)
 
 @app.route('/adminPanel2')
 def adminPanel2():
-    return render_template('adminPanel2.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('adminpanel2.html', data = db.test.find(), status = 'admin')
+    return render_template('adminpanel2.html', data = db.test.find(), status = None)
 
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
-    return render_template('adminPanelSlimnicas.html')
+    if 'user' in session:
+        if session['user'] == 'admin@gmail.com':
+            return render_template('adminpanelslimnicas.html', data = db.test.find(), status = 'admin')
+    return render_template('adminpanelslimnicas.html', data = db.test.find(), status = None)
     
 app.run(host="0.0.0.0", port=80, debug=True)

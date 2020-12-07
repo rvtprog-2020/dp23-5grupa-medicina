@@ -10,13 +10,17 @@
     <link rel="script" type="text/script" href="{{url_for('static', filename='zinas.js')}}">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>E-veselība</title>
 </head>
 <body style="background-color:#FFE3E0;">
 <body class="parlized">
     
     <div class="topline">
-        <h6 class="pies">Jūs neesat pieslēdzies.(<a class="url" href='/login'>pieslēgties</a>)</h6>
+        {%if status == 'admin'%}
+        <h6 class="pies">Pieslēdzies kā Niks Veidemanis (<a class="url" href='/logout'>izrakstīties</a>)</h6>
+        {%else%}
+        <h6 class="pies">Jūs neesat pieslēdzies. (<a class="url" href='/login'>pieslēgties</a>)</h6>
+        {%endif%}
     </div>
 
     <div class="container">
@@ -28,7 +32,7 @@
     
     <div class="navigation" style="background-color:#EEFBFB; height:1000px;">
         <ul class="navigationUL">
-                <!-- Links -->
+
                 <div class= "a1">
                         <h6 {% if active_page == 'aktualitātes'%} class="active" {% endif %}>
                             <a class="navbarTEXT"href='/'>Aktualitātes</a>
@@ -40,7 +44,8 @@
                     </h6>
                 </div>
 
-                <!-- Dropdown -->
+
+
                 <div class="a3">
                     <h6  class="nav-item dropdown">
                         <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,29 +59,31 @@
                         </ul>
                     </h6>
                 </div>
-                <div class="a7">
-                    <h6  class="nav-item dropdown">
-                        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <a class="navbarTEXT">Admin</a>
-                        </span>
-
-                
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <ul>
-                            <a class="dropdown-item" href="/adminPanel2">Pievienot ārstu</a>
-                            <br>
-                            <a class="dropdown-item" href="/adminPanelSlimnicas">Pievineot slimnīcas</a>
-                        </ul>
-                    </h6>
-                </div>
 
 
                 <div class= "a4">
                         <h6  {% if active_page == 'kontakti'%} class="active" {% endif %}>
                             <a class="navbarTEXT"href='/kontakti'>Kontakti</a>
                         </h6>
+                </div>
+
+                {%if status == 'admin'%}
+                <div class="a7">
+                        <h6  class="nav-item dropdown">
+                            <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="navbarTEXT">Admin</a>
+                            </span>
  
-                <!-- Links -->
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul>
+                                    <a class="dropdown-item" href="/adminPanel2">Pievienot ārstu</a>
+                                    <a class="dropdown-item" href="/adminPanelSlimnicas">Pievienot slimnīcas</a>
+                                </ul>
+                            </h6>
+                        </div>
+                {%endif%}
+
+
         </ul>
         <div class="alert alert-warning center-block" role="alert">
             <h style="color:black;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><h href="#"> Uzzināt vairāk...</h>
@@ -91,7 +98,3 @@
         <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>    
     </body>
 </html>
-
-<!--es jūs mīlu-->
-
-<!--Nepievienojat javascript pie templates, ja jūs gribat izsaukt js failu tad lietojat "<script src="static/script.js"></script>"-->
