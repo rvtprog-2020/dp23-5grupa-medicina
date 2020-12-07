@@ -34,6 +34,7 @@
       </table>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;">Drukāt</button>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="refresh()">Atjaunināt</button>
 </div>
 <script>
   function None(){
@@ -58,8 +59,17 @@
     } else {
     tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
     tableDate.innerHTML = "<td style='border: 1px solid black; text-align: center;' id='table_date'>" + newValueMessage + "</td>"
-    alert("Jūsu dati tika pieņemti.")}
+    alert("Jūsu dati tika pieņemti.")
+    }
   }
-
+  function refresh(){
+    let transferJob = localStorage.getItem('job-value')
+    let transferHospital = localStorage.getItem('hospital-value')
+    let transferDate = localStorage.getItem('date-value')
+    let transferTime = localStorage.getItem('time-value')
+    console.log(transferJob, transferHospital, transferTime, transferDate)
+    let newTableHTML = document.getElementById('otrais')
+    newTableHTML.innerHTML = "<tr style='height: 40px;' id='tresais'><td style='border: 1px solid black; text-align: center;'>2</td><td style='border: 1px solid black; text-align: center;'>3942823478</td><td style='border: 1px solid black; text-align: center;' id='table_hospital'>"+ transferHospital +"</td><td style='border: 1px solid black; text-align: center;' id='table_date'>"+ transferDate +" "+ transferTime +"</td><td style='border: 1px solid black; text-align: center;'>Ralfs Filipjonoks</td><td style='border: 1px solid black; text-align: center;' id='table_job'>"+ transferJob +"</td><td style='border: 1px solid black; text-align: center;'><button type='text' style='background: red; color: white; border: black; width: 30px; height: 30px;' onclick='None2()'></button></td></tr>";
+  }
 </script>
 {% endblock %}
