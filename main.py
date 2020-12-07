@@ -87,5 +87,9 @@ def adminPanel2():
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
     return render_template('adminPanelSlimnicas.html')
+
+@app.route('/AdminAktualitates')
+def AdminAktualitates():
+    return render_template('AdminAktualitates.html')
     
 app.run(host="0.0.0.0", port=80, debug=True)
