@@ -87,6 +87,10 @@ function Submit(){
     let dateValue = vizitesDate.value
     let timeValue = vizitesTime.value
     console.log(jobValue, hospitalValue, dateValue, timeValue)
+    localStorage.setItem('job-value', jobValue)
+    localStorage.setItem('hospital-value', hospitalValue)
+    localStorage.setItem('date-value', dateValue)
+    localStorage.setItem('time-value', timeValue)
 }
 </script>
 {% endblock %}
