@@ -133,5 +133,5 @@ def AdminAktualitates():
             return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = 'admin')
     return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = None)
     
->>>>>>> 68d4a91e8cefc49f604955edc98d0145601d79f6
+
 app.run(host="0.0.0.0", port=80, debug=True)
