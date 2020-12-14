@@ -13,19 +13,10 @@ db = client.medicina
 
 # tabulas / dokumenti
 users_db = db.users
-info_db = db.info
 
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
-@app.route('/info', methods = ['POST'])
-def info():
-    if request.method == 'POST':
-        dati = request.json
-        info_db.insert_one({"time":dati['time'], "date":dati['date'], "job":dati['job'], "hospital":dati['hospital']})
-        return {"messange":"New info created!"}
-    else:
-        return {"error":"Method or content type not supported!"}   
 
 @app.route('/')
 def home():
@@ -48,6 +39,7 @@ def login():
         if request.form.get('login') == 'admin@gmail.com' and request.form.get('password') == 'admin':
             session['user'] = request.form.get('login')
             return redirect('/')
+
 
     else:
         if 'user' in session:
