@@ -110,14 +110,14 @@ def kontakti():
 def adminPanel2():
     if 'user' in session:
         if session['user'] == 'admin@gmail.com':
-            return render_template('adminpanel2.html', data = db.test.find(), status = 'admin')
-    return render_template('adminpanel2.html', data = db.test.find(), status = None)
+            return render_template('adminPanel2.html', data = db.test.find(), status = 'admin')
+    return render_template('adminPanel2.html', data = db.test.find(), status = None)
 
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
     if 'user' in session:
         if session['user'] == 'admin@gmail.com':
-            return render_template('adminpanelslimnicas.html', data = db.test.find(), status = 'admin')
-    return render_template('adminpanelslimnicas.html', data = db.test.find(), status = None)
+            return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = 'admin')
+    return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = None)
     
 app.run(host="0.0.0.0", port=80, debug=True)
