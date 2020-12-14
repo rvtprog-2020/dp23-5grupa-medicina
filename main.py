@@ -93,7 +93,7 @@ def user(id):
     else:
         return {"error":"User not found!"}
 
-@app.route('/pieteiktviz')
+@app.route('/pieteiktviz', methods=['GET','POST'])
 def pieteiktviz():
     if 'user' in session:
         if session['user'] == 'admin@gmail.com':
@@ -101,7 +101,7 @@ def pieteiktviz():
     return render_template('pieteiktviz.html', data = db.test.find(), status = None)
 
 
-@app.route('/manasviz')
+@app.route('/manasviz', methods=['GET','POST'])
 def manasviz():
     if 'user' in session:
         if session['user'] == 'admin@gmail.com':
