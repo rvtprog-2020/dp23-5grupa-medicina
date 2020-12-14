@@ -29,7 +29,6 @@ function insertNewRecord(data) {
                        <button class="b1" onClick="onDelete(this)">Dzēst</button>`;
     
 }
-
 function resetForm() {
     document.getElementById("slimnica12").value = "";
     document.getElementById("location12").value = "";
