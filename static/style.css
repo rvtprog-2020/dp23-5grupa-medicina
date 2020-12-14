@@ -265,4 +265,9 @@ td {
     text-align: center;
     padding: 8px;
 }
-
+#input{
+    width:400px;
+}
+#button{
+    width:100px;
+}
