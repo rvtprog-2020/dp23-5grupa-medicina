@@ -56,7 +56,7 @@ function updateRecord(formData) {
     selectedRow.cells[3].innerHTML = formData.arstalaiks;
 }
 function onDelete(td) {
-    if (confirm('Are you sure to delete this record ?')) {
+    if (confirm('Vai jūs esat pārliecināts, ka vēlaties izdzēst šo ?')) {
         row = td.parentElement.parentElement;
         document.getElementById("arstainfo11").deleteRow(row.rowIndex);
         resetForm();
