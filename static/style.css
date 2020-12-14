@@ -257,4 +257,6 @@ ul {
     display: inline-grid;
     padding-left: 20px;
 }
-
+.alert-warning {
+    border-radius: 10px;
+}

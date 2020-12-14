@@ -16,10 +16,10 @@
 <body class="parlized">
     
     <div class="topline">
-        {%if status == 'admin'%}
-        <h6 class="pies">Pieslēdzies kā Niks Veidemanis (<a class="url" href='/logout'>izrakstīties</a>)</h6>
+        {%if session['username'] == request.form['username']%}
+        
         {%else%}
-        <h6 class="pies">Jūs neesat pieslēdzies. (<a class="url" href='/login'>pieslēgties</a>)</h6>
+        <h6 class="pies">Pieslēdzies kā {{username}} (<a class="url" href='/logout'>izrakstīties</a>)</h6>
         {%endif%}
     </div>
 
@@ -44,7 +44,7 @@
                     </h6>
                 </div>
 
-
+                {% if status == 'user' %}
 
                 <div class="a3">
                     <h6  class="nav-item dropdown">
@@ -59,7 +59,8 @@
                         </ul>
                     </h6>
                 </div>
-
+                {%else%}
+                {%endif%}
                 <div class= "a4">
                         <h6  {% if active_page == 'kontakti'%} class="active" {% endif %}>
                             <a class="navbarTEXT"href='/kontakti'>Kontakti</a>
@@ -85,10 +86,10 @@
 
 
         </ul>
-        <div class="alert alert-warning center-block" role="alert">
-            <h style="color:black;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><h href="#"> Uzzināt vairāk...</h>
+        <div class="alert alert-warning center-block" style="border-radius: 10px;" role="alert">
+            <h style="color:black; font-size: 17px;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><h href="#" style="color:blue; font-size: 14px;"> Uzzināt vairāk...</h>
         </div>
-    <div style="padding-left:15px;">
+    <div style="padding-left:15px; padding-right: 15px">
     {% block content %}
 
     {% endblock %}
@@ -98,3 +99,7 @@
         <div class="bottomline">©2020 Latvijas lielā ārstu biedrība</div>    
     </body>
 </html>
+
+
+
+   
