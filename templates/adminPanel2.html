@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
 {% set active_page = 'adminfunctions2' %}
 {% block content %}
+<div class="boomer1">
 <table>
   <tr>
-    <td>
       <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
         <h2>Administrātora panelis</h2>
         <!--Slimnīcas nosaukums-->
@@ -53,10 +53,9 @@
             value="Submit">Pievienot</button>
         </div>
       </form>
-    </td>
   </tr>
 </table>
-  <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;" id="arstainfo11">
+  <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;" id="arstainfo11" class="boomer">
     <thead>
       <tr style="border: 1px solid black; height: 40px;">
         <th style="border: 1px solid black; text-align: center;">Slimnīca kurā strāda ārsts</th>
@@ -67,7 +66,8 @@
       </tr>
     </thead>
     <tbody>
-
+      
     </tbody>
+</div>
 <script src="/static/adminpanel2.js"></script>
 {% endblock %}
