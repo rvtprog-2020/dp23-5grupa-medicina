@@ -86,7 +86,7 @@ function Submit(){
     let vizitesJob = document.getElementById("job").value
     let vizitesHospital = document.getElementById("hospital").value
     let masivs = [vizitesTime, vizitesDate, vizitesJob, vizitesHospital]
-    //localStorage.setItem('tabulas_masivs', masivs)
+
     fetch('/info',{
         method:'POST',
         headers:{
@@ -94,6 +94,7 @@ function Submit(){
         },
         body: JSON.stringify({"time":vizitesTime,"date":vizitesDate,"job":vizitesJob,"hospital":vizitesHospital})        
     })
+    location.reload()
 }
 </script>
 {% endblock %}
