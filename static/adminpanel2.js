@@ -29,8 +29,8 @@ function insertNewRecord(data) {
     cell4 = newRow.insertCell(3);
     cell4.innerHTML = data.arstalaiks;
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<button class="b1" onClick="onEdit(this)">Edit</button>
-                       <button class="b1" onClick="onDelete(this)">Delete</button>`;
+    cell5.innerHTML = `<button class="b1" onClick="onEdit(this)">Rediģēt</button>
+                       <button class="b1" onClick="onDelete(this)">Dzēst</button>`;
     
 }
 
@@ -61,16 +61,4 @@ function onDelete(td) {
         document.getElementById("arstainfo11").deleteRow(row.rowIndex);
         resetForm();
     }
-}
-function validate() {
-    isValid = true;
-    if (document.getElementById("fullName").value == "") {
-        isValid = false;
-        document.getElementById("fullNameValidationError").classList.remove("hide");
-    } else {
-        isValid = true;
-        if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
-            document.getElementById("fullNameValidationError").classList.add("hide");
-    }
-    return isValid;
 }
