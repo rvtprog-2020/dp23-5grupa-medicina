@@ -3,25 +3,25 @@
 {% block content %}
     <h1>Izvēlieties slimnīcu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
-        <form>
+        <form method="POST" action="{{url_for('pieteiktviz')}}">
             <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
-            <option>Izvēlieties slimnīcu</option>
-            <option>Rīgas 1.slimnīca</option>
-            <option>Rīgas 2.slimnīca</option>
-            <option>Neatliekamāš medicīnas centrs</option>
-            <option>Rīgas Austrumu slimnīca</option>
-            <option>Jūrmalas slimnīca</option>
-            <option>Paula Stradiņa slimnīca</option>
+            <option name="hospital">Izvēlieties slimnīcu</option>
+            <option name="hospital">Rīgas 1.slimnīca</option>
+            <option name="hospital">Rīgas 2.slimnīca</option>
+            <option name="hospital">Neatliekamāš medicīnas centrs</option>
+            <option name="hospital">Rīgas Austrumu slimnīca</option>
+            <option name="hospital">Jūrmalas slimnīca</option>
+            <option name="hospital">Paula Stradiņa slimnīca</option>
             </select>
         </form>
     </div>
     <h1>Izvēlieties darbības jomu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
-        <form>
+        <form method="POST">
             <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none; outline:none;" id="job" name="job">
             <option>Izvēlieties darbības jomu</option>
             <option>Zobārsts</option>
-            <option>Psihologs</option>c
+            <option>Psihologs</option>
             <option>Neirologs</option>
             <option>Ķirurgs</option>
             <option>Anesteziologs</option>
@@ -38,7 +38,7 @@
     </div>
     <h1>Izvēlieties datumu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px;">
-        <form>
+        <form method="POST">
             <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="date" name="date">
             <option>Izvēlieties dienu</option>
             <option>Pirmdiena</option>
@@ -52,7 +52,7 @@
         </form>
     </div>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
-        <form>
+        <form method="POST">
             <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="time" name="time">
                 <option>Izvēlieties laiku</option>
                 <option>8:00</option>
@@ -76,21 +76,24 @@
         <h2>Uzmanību!</h2>
         <p>Ejot pie daktera jābūt personas apliecinošiem dokumentiem.</p>
     </div>
+    <div id="users">
+
+    </div>
 <script>
 function Submit(){
-    let vizitesTime = document.getElementById("time")
-    let vizitesDate = document.getElementById("date")
-    let vizitesJob = document.getElementById("job")
-    let vizitesHospital = document.getElementById("hospital")
-    let hospitalValue = vizitesHospital.value
-    let jobValue = vizitesJob.value
-    let dateValue = vizitesDate.value
-    let timeValue = vizitesTime.value
-    console.log(jobValue, hospitalValue, dateValue, timeValue)
-    localStorage.setItem('job-value', jobValue)
-    localStorage.setItem('hospital-value', hospitalValue)
-    localStorage.setItem('date-value', dateValue)
-    localStorage.setItem('time-value', timeValue)
+    let vizitesTime = document.getElementById("time").value
+    let vizitesDate = document.getElementById("date").value
+    let vizitesJob = document.getElementById("job").value
+    let vizitesHospital = document.getElementById("hospital").value
+    let masivs = [vizitesTime, vizitesDate, vizitesJob, vizitesHospital]
+    //localStorage.setItem('tabulas_masivs', masivs)
+    fetch('/info',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"time":vizitesTime,"date":vizitesDate,"job":vizitesJob,"hospital":vizitesHospital})        
+    })
 }
 </script>
 {% endblock %}
