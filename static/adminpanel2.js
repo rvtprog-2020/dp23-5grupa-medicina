@@ -16,7 +16,6 @@ function readFormData() {
     formData["arstalaiks"] = document.getElementById("arstalaiks").value;
     return formData;
 }
-
 function insertNewRecord(data) {
     let table = document.getElementById("arstainfo11").getElementsByTagName('tbody')[0];
     let newRow = table.insertRow(table.length);
