@@ -89,7 +89,7 @@ def pieteiktviz():
         if session['user'] == 'admin@gmail.com':
             return render_template('pieteiktviz.html', data = db.test.find(), status = 'admin')
     return render_template('pieteiktviz.html', data = db.test.find(), status = None)
-    
+
 @app.route('/manasviz')
 def manasviz():
     if 'user' in session:
