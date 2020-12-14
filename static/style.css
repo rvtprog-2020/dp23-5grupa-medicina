@@ -257,8 +257,17 @@ ul {
     display: inline-grid;
     padding-left: 20px;
 }
+.alert-warning {
+    border-radius: 10px;
+}
 td {
     border: 1px solid #000000;
     text-align: center;
     padding: 8px;
+}
+#input{
+    width:400px;
+}
+#button{
+    width:100px;
 }

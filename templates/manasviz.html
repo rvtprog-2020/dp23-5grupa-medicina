@@ -2,10 +2,9 @@
 {% set active_page = 'vizites' %}
 {% block content %}
 <h1>Manas vizītes</h1>
-<div style="background-color: rgb(207, 207, 207);border-radius: 10px;">
-    <table style="width: 1125px; border: 1px solid black; text-align: center; margin-top: 10px;">
+<div style="background-color: rgb(207, 207, 207);border-radius: 10px; padding-left:5px; padding-right:5px; padding-top:5px;">
+    <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
         <tr style="border: 1px solid black; height: 40px;">
-          <th style="border: 1px solid black; text-align: center;">Nr.</th>
           <th style="border: 1px solid black; text-align: center;">Vizītes Nr.</th>
           <th style="border: 1px solid black; text-align: center;">Slimnīca</th>
           <th style="border: 1px solid black; text-align: center;">Vizītes laiks</th>
@@ -14,7 +13,6 @@
           <th style="border: 1px solid black; text-align: center;">Atcelt</th>
         </tr>
         <tr style="height: 40px;" id="pirmais">
-          <td style="border: 1px solid black; text-align: center;">1</td>
           <td style="border: 1px solid black; text-align: center;">3942823478</td>
           <td style="border: 1px solid black; text-align: center;">Rīgas Stradiņa</td>
           <td style="border: 1px solid black; text-align: center;">21.05.2020. 17:55</td>
@@ -23,7 +21,6 @@
           <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None()"></button></td>
         </tr>
         <tr style="height: 40px;" id="otrais">
-          <td style="border: 1px solid black; text-align: center;">2</td>
           <td style="border: 1px solid black; text-align: center;">3942823478</td>
           <td style="border: 1px solid black; text-align: center;" id="table_hospital">Rīgas Stradiņa</td>
           <td style="border: 1px solid black; text-align: center;" id="table_date">21.05.2020. 17:55</td>
@@ -68,22 +65,20 @@
 })
 // test
 async function getInfo(){
-    let response = await fetch('/info')
-    let data_json = await response.json()
 
-    console.log(data_json)
-    let info = document.getElementById('info')
-    info.innerHTML = ''
+}
+async function refresh(){
+  let response = await fetch('/infos')
+  let data_json = await response.json()
 
-    for(let information of data_json){
-        msgHTML = `<p>Vārds:${info.hospital} Uzvārds:${info.job}</p><button onclick="editUser('${info._id.$oid}')">Edit</button>`
+  console.log(data_json)
+  let info = document.getElementById('info')
+    console.log(info)
+    info.innerHTML = '<div></div>'
+  for(let informacija of data_json){
+        msgHTML = `<div>Vārds:${info.hospital} Uzvārds:${info.job}</div>`
         info.innerHTML = info.innerHTML + msgHTML
     }
-}
-function refresh(){
-    //let tabulasMasivs = localStorage.getItem('tabulas_masivs')
-    //console.log(tabulasMasivs)
-    console.log()
   }
 </script>
 {% endblock %}

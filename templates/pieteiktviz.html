@@ -3,22 +3,22 @@
 {% block content %}
     <h1>Izvēlieties slimnīcu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
-        <form method="POST" action="{{url_for('pieteiktviz')}}">
-            <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
-            <option name="hospital">Izvēlieties slimnīcu</option>
-            <option name="hospital">Rīgas 1.slimnīca</option>
-            <option name="hospital">Rīgas 2.slimnīca</option>
-            <option name="hospital">Neatliekamāš medicīnas centrs</option>
-            <option name="hospital">Rīgas Austrumu slimnīca</option>
-            <option name="hospital">Jūrmalas slimnīca</option>
-            <option name="hospital">Paula Stradiņa slimnīca</option>
+        <form>
+            <select style="width: 1095px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
+            <option>Izvēlieties slimnīcu</option>
+            <option>Rīgas 1.slimnīca</option>
+            <option>Rīgas 2.slimnīca</option>
+            <option>Neatliekamāš medicīnas centrs</option>
+            <option>Rīgas Austrumu slimnīca</option>
+            <option>Jūrmalas slimnīca</option>
+            <option>Paula Stradiņa slimnīca</option>
             </select>
         </form>
     </div>
     <h1>Izvēlieties darbības jomu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
-        <form method="POST">
-            <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none; outline:none;" id="job" name="job">
+        <form>
+            <select style="width: 1095px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none; outline:none;" id="job" name="job">
             <option>Izvēlieties darbības jomu</option>
             <option>Zobārsts</option>
             <option>Psihologs</option>
@@ -40,7 +40,7 @@
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px;">
         <form method="POST">
             <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="date" name="date">
-            <option>Izvēlieties dienu</option>
+            <option></option>
             <option>Pirmdiena</option>
             <option>Otrdiena</option>
             <option>Trešdiena</option>
@@ -71,6 +71,19 @@
             </select>
         </form>
     </div>
+    <h1>Izvēlieties ārstu</h1>
+    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
+        <form method="POST">
+            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="doctor" name="doctor">
+                <option>Izvēlieties ārstu</option>
+                <option>Arvis Ceirulis</option>
+                <option>Valters Upenieks</option>
+                <option>Niks Veidemanis</option>
+                <option>Ralfs Filipjonoks</option>
+                <option>Ralfs Daniels Ūks</option>
+            </select>
+        </form>
+    </div>
     <button style="margin-top: 10px;" onclick="Submit()">Pieteikt vizīti</button>
     <div class="zina" style="width: 1000px; height: 100px; background-color:red;margin-left: 50px;">
         <h2>Uzmanību!</h2>
@@ -85,15 +98,21 @@ function Submit(){
     let vizitesDate = document.getElementById("date").value
     let vizitesJob = document.getElementById("job").value
     let vizitesHospital = document.getElementById("hospital").value
-    let masivs = [vizitesTime, vizitesDate, vizitesJob, vizitesHospital]
+    let vizitesDoctor = document.getElementById("doctor").value
+    console.log(vizitesDate)
+    let masivs = [vizitesTime, vizitesDate, vizitesJob, vizitesHospital, vizitesDoctor]
+    if(masivs[1] == ''){
+        console.log("Ievadiet citus datus!")
+    }
 
     fetch('/info',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({"time":vizitesTime,"date":vizitesDate,"job":vizitesJob,"hospital":vizitesHospital})        
+        body: JSON.stringify({"time":vizitesTime,"date":vizitesDate,"job":vizitesJob,"hospital":vizitesHospital, "doctor":vizitesDoctor})        
     })
+    alert("Jūsu dati tika pieņemti!")
     location.reload()
 }
 </script>
