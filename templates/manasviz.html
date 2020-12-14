@@ -66,7 +66,7 @@
   window.addEventListener("load", function(){
     getInfo()
 })
-
+// test
 async function getInfo(){
     let response = await fetch('/info')
     let data_json = await response.json()
@@ -83,7 +83,7 @@ async function getInfo(){
 function refresh(){
     //let tabulasMasivs = localStorage.getItem('tabulas_masivs')
     //console.log(tabulasMasivs)
-    let newDataHTML = "<div id=''>Jauni dati</div>"
+    console.log()
   }
 </script>
 {% endblock %}

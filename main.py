@@ -18,15 +18,23 @@ info_db = db.info
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
-@app.route('/info', methods = ['POST'])	
+@app.route('/info', methods = ['GET','POST'])	
 def info():	
     if request.method == 'POST':	
         dati = request.json	
         info_db.insert_one({"time":dati['time'], "date":dati['date'], "job":dati['job'], "hospital":dati['hospital']})	
         return {"messange":"New info created!"}	
-    else:	
+    else:
+        info_db.find_one
         return {"error":"Method or content type not supported!"} 
 
+@app.route('/info/<id>')
+def infos(id):
+    info = info_db.find_one({"_id":id})
+    if info:
+        return dumps(info)
+    else:
+        return "1"
 @app.route('/')
 def home():
     if 'user' in session:
@@ -99,7 +107,7 @@ def pieteiktviz():
             return render_template('pieteiktviz.html', data = db.test.find(), status = 'admin')
     return render_template('pieteiktviz.html', data = db.test.find(), status = None)
 
-@app.route('/manasviz')
+@app.route('/manasviz', methods=['GET','POST'])
 def manasviz():
     if 'user' in session:
         if session['user'] == 'admin@gmail.com':
