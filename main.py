@@ -39,6 +39,7 @@ def login():
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
             return redirect(url_for('home'))
+    return 'Nepareizs lietotājvards vai parole!'
 
 @app.route('/logout')
 def logout():
