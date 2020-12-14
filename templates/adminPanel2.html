@@ -40,7 +40,7 @@
         <th style="border: 1px solid black; text-align: center;">Specialitāte</th>
         <th style="border: 1px solid black; text-align: center;">Ārsts</th>
         <th style="border: 1px solid black; text-align: center;">Ārsta darba laiks</th>
-        <th style="border: 1px solid black; text-align: center;">Darbības</th>
+        <th style="border: 1px solid black; text-align: center;">Opcijas</th>
       </tr>
     </thead>
     <tbody>
@@ -78,8 +78,8 @@ function insertNewRecord(data) {
     cell4 = newRow.insertCell(3);
     cell4.innerHTML = data.arstalaiks;
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<button class="b1" onClick="onEdit(this)">Edit</button>
-                       <button class="b1" onClick="onDelete(this)">Delete</button>`;
+    cell5.innerHTML = `<button class="b1" onClick="onEdit(this)">Rediģēt</button>
+                       <button class="b1" onClick="onDelete(this)">Dzēst</button>`;
     
 }
 
