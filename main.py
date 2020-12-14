@@ -12,6 +12,15 @@ app.secret_key = b'\xf0\x14\x9a'
 client = MongoClient("mongodb+srv://niks:BgizhM1Zh1HYAgw1@dp23-5grupa-medicina.1bqly.mongodb.net/medicina?retryWrites=true&w=majority")
 db = client.medicina
 
+@app.route('/info', methods = ['POST'])	
+def info():	
+    if request.method == 'POST':	
+        dati = request.json	
+        info_db.insert_one({"time":dati['time'], "date":dati['date'], "job":dati['job'], "hospital":dati['hospital']})	
+        return {"messange":"New info created!"}	
+    else:	
+        return {"error":"Method or content type not supported!"} 
+
 @app.route('/')
 def home():
     if 'username' in session:
@@ -30,8 +39,6 @@ def login():
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
             return redirect(url_for('home'))
-
-    return 'Invalid username or password'
 
 @app.route('/logout')
 def logout():
@@ -67,13 +74,12 @@ def slimnicas():
 
 #### Vizītes
 
-@app.route('/pieteiktviz')
+@app.route('/pieteiktviz', methods=['GET','POST'])
 def pieteiktviz():
     if 'user' in session:
         if session['user'] == 'admin':
             return render_template('pieteiktviz.html',username=session['username'], data = db.users.find(), status = 'admin')
     return render_template('pieteiktviz.html',username=session['username'], data = db.users.find(), status = 'user')
-
 
 @app.route('/manasviz')
 def manasviz():

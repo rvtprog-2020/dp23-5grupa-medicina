@@ -32,8 +32,10 @@
           <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None2()"></button></td>
         </tr>
       </table>
-      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px; outline:none;">Drukāt</button>
-      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px; outline:none;" onclick="labot()">Labot</button>
+      <div id="info"></div>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;">Drukāt</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="refresh()">Atjaunināt</button>
 </div>
 <script>
   function None(){
@@ -58,8 +60,30 @@
     } else {
     tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
     tableDate.innerHTML = "<td style='border: 1px solid black; text-align: center;' id='table_date'>" + newValueMessage + "</td>"
-    alert("Jūsu dati tika pieņemti.")}
+    alert("Jūsu dati tika pieņemti.")
+    }
   }
+  window.addEventListener("load", function(){
+    getInfo()
+})
 
+async function getInfo(){
+    let response = await fetch('/info')
+    let data_json = await response.json()
+
+    console.log(data_json)
+    let info = document.getElementById('info')
+    info.innerHTML = ''
+
+    for(let information of data_json){
+        msgHTML = `<p>Vārds:${info.hospital} Uzvārds:${info.job}</p><button onclick="editUser('${info._id.$oid}')">Edit</button>`
+        info.innerHTML = info.innerHTML + msgHTML
+    }
+}
+function refresh(){
+    //let tabulasMasivs = localStorage.getItem('tabulas_masivs')
+    //console.log(tabulasMasivs)
+    let newDataHTML = "<div id=''>Jauni dati</div>"
+  }
 </script>
 {% endblock %}

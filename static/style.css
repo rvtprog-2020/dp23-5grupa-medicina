@@ -257,6 +257,14 @@ ul {
     display: inline-grid;
     padding-left: 20px;
 }
+<<<<<<< HEAD
 .alert-warning {
     border-radius: 10px;
 }
+=======
+td {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 8px;
+}
+>>>>>>> 34f2bff10c9add42629b66ca29572ddeb8e19baa
