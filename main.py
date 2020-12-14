@@ -113,20 +113,16 @@ def adminPanel2():
 
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
-<<<<<<< HEAD
+
     return render_template('adminPanelSlimnicas.html')
 
-<<<<<<< HEAD
-=======
 @app.route('/AdminAktualitates')
 def AdminAktualitates():
     return render_template('AdminAktualitates.html')
-=======
     if 'user' in session:
         if session['user'] == 'admin@gmail.com':
             return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = 'admin')
     return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = None)
->>>>>>> b5a45e9b7628a2cbfd030c5b895437b9f3fbf308
     
 >>>>>>> 68d4a91e8cefc49f604955edc98d0145601d79f6
 app.run(host="0.0.0.0", port=80, debug=True)
