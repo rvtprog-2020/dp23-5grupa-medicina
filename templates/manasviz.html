@@ -25,14 +25,17 @@
         <tr style="height: 40px;" id="otrais">
           <td style="border: 1px solid black; text-align: center;">2</td>
           <td style="border: 1px solid black; text-align: center;">3942823478</td>
-          <td style="border: 1px solid black; text-align: center;">Rīgas Stradiņa</td>
-          <td style="border: 1px solid black; text-align: center;">21.05.2020. 17:55</td>
+          <td style="border: 1px solid black; text-align: center;" id="table_hospital">Rīgas Stradiņa</td>
+          <td style="border: 1px solid black; text-align: center;" id="table_date">21.05.2020. 17:55</td>
           <td style="border: 1px solid black; text-align: center;">Ralfs Filipjonoks</td>
-          <td style="border: 1px solid black; text-align: center;">Programmētājs</td>
+          <td style="border: 1px solid black; text-align: center;" id="table_job">Programmētājs</td>
           <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None2()"></button></td>
         </tr>
       </table>
+
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;">Drukāt</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="refresh()">Atjaunināt</button>
 </div>
 <script>
   function None(){
@@ -40,8 +43,30 @@
     tableHTML.innerHTML = " "
   }
   function None2(){
-    let tableHTML = document.getElementById('otrais')
-    tableHTML.innerHTML = " "
+    let tableHTML2 = document.getElementById('otrais')
+    tableHTML2.innerHTML = " "
   }
+  function labot(){
+    let tableDate = document.getElementById('table_date')
+    tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
+    console.log("Ievades lauki")
+  }
+  function izlabot(){
+    let newValue = document.getElementById('message')
+    let newValueMessage = newValue.value;
+    let tableDate = document.getElementById('table_date')
+    if (newValueMessage == ""){
+      alert("Ievadiet datus!")
+    } else {
+    tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
+    tableDate.innerHTML = "<td style='border: 1px solid black; text-align: center;' id='table_date'>" + newValueMessage + "</td>"
+    alert("Jūsu dati tika pieņemti.")
+    }
+  }
+  function refresh(){
+    //let tabulasMasivs = localStorage.getItem('tabulas_masivs')
+    console.log(tabulasMasivs)
+  }
+
 </script>
 {% endblock %}

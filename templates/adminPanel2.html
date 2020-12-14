@@ -1,45 +1,73 @@
 {% extends 'layout.html' %}
 {% set active_page = 'adminfunctions2' %}
 {% block content %}
-<h2>Administrātora panelis</h2>
-<h3>Ievadiet slimnīcas nosaukumu :</h3>
-    <div class="adminpanel1">
-        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" id="12Search" type="text">
-    </div>
-<br><br>
-<h3>Ievadiet ārsta profesiju :</h3>
-    <div class="adminpanel10">
-        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" id="12Search" type="text">   
-    </div>
-<br><br>
-<h3>Ievadiet ārsta vārdu :</h3>
-    <div class="adminpanel8">
-        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet ārsta vārdu" id="123Search" type="text">
-    </div>
-<br><br>
-<div class="adminbutt">
-    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Pievienot</button>
-    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Rediģēt</button>
-</div>
-<table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
-    <tr style="border: 1px solid black; height: 40px;">
-        <th style="border: 1px solid black; text-align: center;">Nr.</th>
+<div class="boomer1">
+<table>
+  <tr>
+      <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+        <h2>Administrātora panelis</h2>
+        <!--Slimnīcas nosaukums-->
+        <h3>Ievadiet slimnīcas nosaukumu :</h3>
+            <div class="adminpanel1">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; 
+                width: 575px;" 
+                placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" 
+                id="slimnicasnosaukums" 
+                type="text">
+            </div>
+        <br><br>
+        <!--Ārsta profesija-->
+        <h3>Ievadiet ārsta profesiju :</h3>
+            <div class="adminpanel10">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; 
+                width: 575px;" 
+                placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" 
+                id="arstaprofesija" 
+                type="text">   
+            </div>
+        <br><br>
+        <!--Ārsta vārds-->
+        <h3>Ievadiet ārsta vārdu :</h3>
+            <div class="adminpanel8">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; 
+                width: 575px;" 
+                placeholder="Ievadiet ārsta vārdu" 
+                id="arstavards" 
+                type="text">
+            </div>
+        <br><br>
+        <!--Ārsta darba laiks-->
+        <h3>Ievadiet ārsta darba laiku :</h3>
+            <div class="adminpanel8">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; 
+                width: 575px;" 
+                placeholder="Ievadiet ārsta darba laiku" 
+                id="arstalaiks" 
+                type="text">
+            </div>
+        <br><br>
+        <!--POGA-->
+        <div  class="form-action-buttons">
+            <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" 
+            type="Submit" 
+            value="Submit">Pievienot</button>
+        </div>
+      </form>
+  </tr>
+</table>
+  <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;" id="arstainfo11" class="boomer">
+    <thead>
+      <tr style="border: 1px solid black; height: 40px;">
         <th style="border: 1px solid black; text-align: center;">Slimnīca kurā strāda ārsts</th>
         <th style="border: 1px solid black; text-align: center;">Specialitāte</th>
         <th style="border: 1px solid black; text-align: center;">Ārsts</th>
         <th style="border: 1px solid black; text-align: center;">Ārsta darba laiks</th>
-    </tr>
-<script>
-    function Submit(){
-        let vizitesTime = document.getElementById("time")
-        let vizitesDate = document.getElementById("date")
-        let vizitesJob = document.getElementById("job")
-        let vizitesHospital = document.getElementById("hospital")
-        let hospitalValue = vizitesHospital.value
-        let jobValue = vizitesJob.value
-        let dateValue = vizitesDate.value
-        let timeValue = vizitesTime.value
-    console.log(jobValue, hospitalValue, dateValue, timeValue)
-}
-</script>
+        <th style="border: 1px solid black; text-align: center;">Opcijas</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+</div>
+<script src="/static/adminpanel2.js"></script>
 {% endblock %}

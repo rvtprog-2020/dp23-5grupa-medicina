@@ -1,16 +1,23 @@
 {% extends 'layout.html' %}
 {% set active_page = 'login' %}
 {% block content %}
-<div style="padding-bottom:10px;">
+
+<form class="form-signin"action="/login" method = 'POST' >
   <h3 style="color:gray; text-decoration:underline;">Pieslēgšanās portālā</h3>
-  <h5 style="font-size:17px; color:darkslategray;">Lietotāja vārds</h5><input type="text" name="loginVards" id="loginVards">
-  <h5 style="font-size:17px; color:darkslategray;">Parole</h5><input type="password" name="loginParole" id="loginParole">
+    <h5 style="font-size:17px; color:darkslategray;">Lietotāja vārds</h5><input type="text" name="login" id="loginVards">
+    <br>
+    <h5 style="font-size:17px; color:darkslategray;">Parole</h5><input type="password" name="password" id="loginParole">
+  </div>
+
+  <div style="padding-left: 15px; padding-top: 10px;">
+  <button type="submit" id="loginSubmit" class="btn btn-primary">Pieslēgties</button>
+  <div style="padding-top:10px;">
+    <a href="/" style="text-decoration:underline; padding-right:10px;">aizmirsu paroli</a>
+    <a href="/register" style="text-decoration:underline;">reģistrēties</a>
+  </div>
 </div>
-<button type="submit" id="loginSubmit" class="btn btn-primary">Pieslēgties</button>
-<div style="padding-top:18px;">
-  <a href="/" style="text-decoration:underline; padding-right:10px;">aizmirsu paroli</a>
-  <a href="/register" style="text-decoration:underline;">reģistrēties</a>
-</div>
-<script src="static/script.js"></script>
+</form>
+
+  <script src="static/script.js"></script>
 {% endblock %}
-<!--es commitošu dead-->
+

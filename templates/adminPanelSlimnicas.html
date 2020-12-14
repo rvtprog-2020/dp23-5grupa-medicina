@@ -1,25 +1,42 @@
 {% extends 'layout.html' %}
 {% set active_page = 'adminPanelSlimnicas' %}
 {% block content %}
-<h2>Administrātora panelis</h2>
-<h3>Ievadiet slimnīcas nosaukumu :</h3>
-    <div class="adminpanel1">
-        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas nosaukumu kuru jūs vēletos pievienot" id="slimnica" type="text">
-    </div>
-<br><br>
-<h3>Ievadiet slimnīcas atrašanās vietu :</h3>
-    <div class="adminpanel10">
-        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 80%;" placeholder="Ievadiet slimnīcas atrašanās vietu" id="location" type="text">   
-    </div>
-<br><br>
-<div class="adminbutt">
-    <button style="width: 100px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="submit">Pievienot</button>
-</div>
-<table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
-    <tr style="border: 1px solid black; height: 40px;">
-      <th style="border: 1px solid black; text-align: center;">Nr.</th>
-      <th style="border: 1px solid black; text-align: center;">Slimnīcas nosaukums</th>
-      <th style="border: 1px solid black; text-align: center;">Atrašanās vieta</th>
-      <th style="border: 1px solid black; text-align: center;">Darba laiks</th>
+<table>
+    <tr>
+        <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+            <h2>Administrātora panelis</h2>
+                <h3>Ievadiet slimnīcas nosaukumu :</h3>
+                    <div class="adminpanel1">
+                        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet slimnīcas nosaukumu kuru jūs vēletos pievienot" id="slimnica12" type="text">
+                    </div>
+                <br><br>
+                <h3>Ievadiet slimnīcas atrašanās vietu :</h3>
+                    <div class="adminpanel10">
+                        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet slimnīcas atrašanās vietu" id="location12" type="text">   
+                    </div>
+                <br><br>
+                <h3>Ievadiet slimnīcas darba laiku :</h3>
+                    <div class="adminpanel10">
+                        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet slimnīcas darba laiku" id="darbalaiks" type="text">   
+                    </div>
+                <br><br>
+                <div class="adminbutt">
+                    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;">Pievienot</button>
+                </div>
+            </form>
     </tr>
+</table>
+<table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;" id="slimtabula" class="boomer">
+    <thead>
+    <tr style="border: 1px solid black; height: 40px;">
+        <th style="border: 1px solid black; text-align: center;">Slimnīcas nosaukums</th>
+        <th style="border: 1px solid black; text-align: center;">Atrašanās vieta</th>
+        <th style="border: 1px solid black; text-align: center;">Darba laiks</th>
+        <th style="border: 1px solid black; text-align: center;">Opcijas</th>
+    </tr>
+</thead>
+    <tbody>
+
+    </tbody>
+<script src="/static/slimnicas.js"></script>
 {% endblock %}
