@@ -115,32 +115,32 @@ def adminPanelSlimnicas():
 
 #### Skolotāja kods ####
 
-# @app.route('/users')
-# def users():
-#     users_data = users_db.find()
-#     if users_data:
-#         return dumps(users_data)
-#     else:
-#         return {"error":"No users in DB"}
+@app.route('/users')
+def users():
+    users_data = db.users.find()
+    if users_data:
+        return dumps(users_data)
+    else:
+        return {"error":"No users in DB"}
 
-#     return "1"
+    return "1"
 
-# @app.route('/user/<id>')
-# def user(id):
-#     user = users_db.find_one({"_id":ObjectId(id)})
-#     if user:
-#         return dumps(user)
-#     else:
-#         return {"error":"User not found!"}
+@app.route('/user/<id>')
+def user(id):
+    user = db.users.find_one({"_id":ObjectId(id)})
+    if user:
+        return dumps(user)
+    else:
+        return {"error":"User not found!"}
 
-# @app.route('/user/create', methods = ['POST'])
-# def createUser():
-#     if request.method == 'POST' and request.content_type == 'application/json':    
-#         dati = request.json
-#         users_db.insert_one({"vards":dati['vards'], "uzvards":dati['uzvards'], "status":dati['status']})
-#         return {"messange":"User created!"}
-#     else:
-#         return {"error":"Method or content type not supported!"}
+@app.route('/user/create', methods = ['POST'])
+def createUser():
+    if request.method == 'POST' and request.content_type == 'application/json':    
+        dati = request.json
+        db.users.find_one({"vards":dati['vards'], "uzvards":dati['uzvards'], "status":dati['status']})
+        return {"messange":"User created!"}
+    else:
+        return {"error":"Method or content type not supported!"}
 
     
 app.run(host="0.0.0.0", port=80, debug=True)
