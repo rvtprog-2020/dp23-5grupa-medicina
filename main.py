@@ -67,31 +67,32 @@ def home():
 @app.route('/login', methods=['POST'])
 def login():
     users = db.users
-    login_user = users.find_one({'name': request.form['username']})
-
+    login_user = users.find_one({'username': request.form['username']})
+    
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
+            session['status'] = 1
             return redirect(url_for('home'))
-    return 'Nepareizs lietotājvards vai parole!'
+    return render_template('loginpage.html', error = 'Nepareizs lietotājvārds vai parole!')
 
 @app.route('/logout')
 def logout():
-	session.pop('username', None)
-	return redirect('/')
-
+	session.pop('username', None), session.pop('status', None)
+	return redirect('/') 
+    
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         users = db.users
-        existing_user = users.find_one({'name' : request.form['username']})
+        existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'name':request.form['username'], 'password': hashpass})
+            users.insert({'name':request.form['name'], 'surname':request.form['surname'], 'username':request.form['username'], 'email':request.form['email'], 'password': hashpass, 'personalcode':request.form['per1'] +'-'+ request.form['per2'], 'telephone':request.form['tel']})
             session['username'] =  request.form['username']
             return redirect(url_for('home'))
-
+        error = "That username already exists!"
         return 'That username already exists!'
 
     return render_template('register.html')

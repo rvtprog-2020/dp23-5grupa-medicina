@@ -16,10 +16,10 @@
 <body class="parlized">
     
     <div class="topline">
-        {%if session['username'] == request.form['username']%}
-        
-        {%else%}
+        {%if session['status'] == 1%}
         <h6 class="pies">Pieslēdzies kā {{username}} (<a class="url" href='/logout'>izrakstīties</a>)</h6>
+        {%else%}
+        
         {%endif%}
     </div>
 
@@ -102,7 +102,7 @@
 
 <script>
 var d = new Date();
-var days = ["Svētdiena","Pirmdiena","Otrdiena","Treštdiena","Ceturtdiena","Piektdiena","Sestdiena"];
+var days = ["Svētdiena","Pirmdiena","Otrdiena","Trešdiena","Ceturtdiena","Piektdiena","Sestdiena"];
 var months = ["Janvāris","Februāris","Marts","Aprīlis","Maijs","Jūnijs","Jūlijs","Augusts","Septembris","Oktobris","Novembris","Decembris"];
 document.getElementById("diena").innerHTML = days[d.getDay()]
 document.getElementById("datums").innerHTML = d.getDate();

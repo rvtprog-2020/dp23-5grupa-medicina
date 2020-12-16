@@ -20,15 +20,59 @@
 
 <H1>Reģistrēties portālā</H1>
 <hr>
+
 <form method=POST action="{{ url_for('register') }}">
+  {% if error %}
+    <p class="error"><strong>Error:</strong>{{error}}</p>
+  {% endif %}
+
+<!-- Vārds un uzvārds -->
+    <!-- vārds -->
+<div style="display:inline-block;">
+    <label for="exampleInputEmail1">Vārds</label>
+  <div class="form-group">
+    <input type="text" id="smallinput" class="form-control" name="name" required>
+  </div>
+</div>
+    <!-- uzvārds -->
+<div style="display:inline-block; padding-left:7px;">
+    <label for="exampleInputEmail1">Uzvārds</label>
+  <div class="form-group">
+    <input type="text" id="smallinput" class="form-control" name="surname" required>
+  </div>
+</div>
+<!-- Lietotājvārds -->
   <div class="form-group">
       <label for="exampleInputEmail1">Lietotājvārds</label>
-      <input type="text" id="input" class="form-control" name="username" placeholder="Lietotājvārds">
+      <input type="text" id="input" class="form-control" name="username" minlength="4" maxlength="21" required>
   </div>
+<!-- E-pasts -->
+  <div class="form-group">
+    <label for="email">E-pasts</label>
+    <input type="email" id="input" class="form-control" name="email" required>
+  </div>
+<!-- Parole -->
   <div class="form-group">
       <label for="exampleInputPassword1">Parole</label>
-      <input type="password" id="input" class="form-control" name="pass" placeholder="Parole">
+      <input type="password" id="input" class="form-control" name="pass" minlength="4" maxlength="21" required>
   </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Parole atkārtoti</label>
+    <input type="password" id="input" class="form-control" name="pass" minlength="4" maxlength="21" required>
+  </div>
+<!-- Personas kods -->
+    <label for="exampleInputPassword1">Personas kods</label>
+  <div class="form-group">
+    <input type="text" id="smallinput" class="form-control" name="per1" pattern="\d*" minlength="6" maxlength="6" required>
+    -
+    <input type="text" id="smallinput" class="form-control" name="per2" pattern="\d*" minlength="6" maxlength="6" required>
+  </div>
+<!-- Tālrunis -->
+  <div class="form-group">
+    <label for="exampleInputPassword1">Tālrunis</label>
+    <input type="tel" id="input" class="form-control" name="tel" pattern="[0-9]{8}" minlength="8" maxlength="8" required>
+  </div>
+<!-- Reģistrēties poga -->
   <button type="submit" id="button" class="btn btn-primary btn-block">Reģistrēties</button>
   <br>
   <a href="/" style="text-decoration:underline;">pieslēgties</a>
