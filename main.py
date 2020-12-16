@@ -21,6 +21,14 @@ info_db = db.info
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
+@app.route('/info/delete/<id>', methods = ['GET','POST']) # Vajag norādīt ID!
+def infoDelete(id):
+    info = info_db.find_one_and_delete({"_id":ObjectId(id)})
+    if info:
+        return{"message":"Vizīte izdzēsta!"}
+    else:
+        return {"message":"Lietotājs netika izdzēsts!"}
+
 @app.route('/infos', methods = ['GET','POST'])
 def infos():
     info_data = info_db.find()
