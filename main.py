@@ -100,6 +100,7 @@ def register():
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name':request.form['name'], 'surname':request.form['surname'], 'username':request.form['username'], 'email':request.form['email'], 'password': hashpass, 'personalcode':request.form['per1'] +'-'+ request.form['per2'], 'telephone':request.form['tel']})
             session['username'] =  request.form['username']
+            session['status'] = 1
             return redirect(url_for('home'))
         error = "That username already exists!"
         return 'That username already exists!'
