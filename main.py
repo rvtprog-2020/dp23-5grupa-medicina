@@ -21,13 +21,22 @@ info_db = db.info
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
-@app.route('/info/delete/<id>', methods = ['GET','POST']) # Vajag norādīt ID!
+@app.route('/info/print/<id>', methods = ['GET','POST']) #Drukāt nav pabeigts!
+def printId(id):
+    info = info_db.find({"_id":ObjectId(id)})
+    if info:
+        return dumps(info)
+    else:
+        return {"message":"Šāda vizīte nepastāv!"}
+
+@app.route('/info/delete/<id>', methods = ['GET','POST'])
 def infoDelete(id):
-    info = info_db.find_one_and_delete({"_id":ObjectId(id)})
+    dati = request.json
+    info = info_db.find_one_and_delete({"time":dati['time'], "date":dati['date'], "job":dati['job'], "hospital":dati['hospital'], "doctor":dati['doctor']})
     if info:
         return{"message":"Vizīte izdzēsta!"}
     else:
-        return {"message":"Lietotājs netika izdzēsts!"}
+        return {"message":"Vizīte netika izdzēsta!"}
 
 @app.route('/infos', methods = ['GET','POST'])
 def infos():

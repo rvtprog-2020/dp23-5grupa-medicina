@@ -18,30 +18,14 @@
           <td style="border: 1px solid black; text-align: center;">21.05.2020. 17:55</td>
           <td style="border: 1px solid black; text-align: center;">Arvis Ceirulis</td>
           <td style="border: 1px solid black; text-align: center;">Programmētājs</td>
-          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None()"></button></td>
-        </tr>
-        <tr style="height: 40px;" id="otrais">
-          <td style="border: 1px solid black; text-align: center;">3942823478</td>
-          <td style="border: 1px solid black; text-align: center;" id="table_hospital">Rīgas Stradiņa</td>
-          <td style="border: 1px solid black; text-align: center;" id="table_date">21.05.2020. 17:55</td>
-          <td style="border: 1px solid black; text-align: center;">Ralfs Filipjonoks</td>
-          <td style="border: 1px solid black; text-align: center;" id="table_job">Programmētājs</td>
-          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None2()"></button></td>
+          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;"></button></td>
         </tr>
       </table>
       <div id="info"></div>
-      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;">Drukāt</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" >Drukāt</button>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
 </div>
 <script>
-  function None(){
-    let tableHTML = document.getElementById('pirmais')
-    tableHTML.innerHTML = " "
-  }
-  function None2(){
-    let tableHTML2 = document.getElementById('otrais')
-    tableHTML2.innerHTML = " "
-  }
   function labot(){
     let tableDate = document.getElementById('table_date')
     tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
@@ -72,7 +56,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<div></div>'
   for(let informacija of data_json){
-        msgHTML = `<td>Vizītes ID:${informacija._id.$oid} </td><td>Slimnīca:${informacija.hospital} </td><td>Darbības joma:${informacija.job}</td><td> Vizītes laiks:${informacija.date} ${informacija.time}</td><td> Ārsts:${informacija.doctor}</td><td><button style="margin-right: 10px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt vizīti</button></td>`
+        msgHTML = `<div>Vizītes ID:${informacija._id.$oid} Slimnīca:${informacija.hospital} Darbības joma:${informacija.job} Vizītes laiks:${informacija.date} ${informacija.time} Ārsts:${informacija.doctor}<button style="margin-right: 10px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt vizīti</button><button>Drukāt</button>`
         info.innerHTML = info.innerHTML + msgHTML
     }
   }
@@ -82,10 +66,8 @@ async function editInfo(id){
 
   console.log(data)
   console.log("Izmainīta informacija")
-  let editHTML = "<input id='alternative' type='text'><button onclick='accept()'>Labot</button>"
-}
-function accept(){
 
+  
 }
 async function deleteInfo(id){
   let response = await fetch(`/info/${id}`)
@@ -103,6 +85,18 @@ async function deleteInfo(id){
   })
   alert("Dati tika izdzēsti!")
 
+}
+async function printInfo(id){
+  let response = await fetch(`/info/${id}`)
+  let data_json_delete = await response.json()
+
+  fetch('/info/print/<id>',{
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"time":data_json_delete.time,"date":data_json_delete.date,"job":data_json_delete.job,"hospital":data_json_delete.hospital, "doctor":data_json_delete.doctor, "id":data_json_delete._id.$oid})
+  })
 }
 </script>
 {% endblock %}
