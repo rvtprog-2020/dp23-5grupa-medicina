@@ -5,13 +5,6 @@
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
         <form>
             <select style="width: 1095px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
-            <option>Izvēlieties slimnīcu</option>
-            <option>Rīgas 1.slimnīca</option>
-            <option>Rīgas 2.slimnīca</option>
-            <option>Neatliekamāš medicīnas centrs</option>
-            <option>Rīgas Austrumu slimnīca</option>
-            <option>Jūrmalas slimnīca</option>
-            <option>Paula Stradiņa slimnīca</option>
             </select>
         </form>
     </div>
@@ -37,20 +30,9 @@
         </form>
     </div>
     <h1>Izvēlieties datumu</h1>
-    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px;">
-        <form method="POST">
-            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="date" name="date">
-            <option>Izvēlieties datumu</option>
-            <option>Pirmdiena</option>
-            <option>Otrdiena</option>
-            <option>Trešdiena</option>
-            <option>Ceturtdiena</option>
-            <option>Piektdiena</option>
-            <option>Sestdiena</option>
-            <option>Svētdiena</option>
-            </select>
-        </form>
-    </div>
+    <form>
+        <input type="date" id="date" name="date">
+    </form>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
         <form method="POST">
             <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="time" name="time">
@@ -93,7 +75,7 @@ function Submit(){
     let vizitesJob = document.getElementById("job").value
     let vizitesHospital = document.getElementById("hospital").value
     let vizitesDoctor = document.getElementById("doctor").value
-    while (vizitesDate == 'Izvēlieties datumu' || vizitesDoctor == '' || vizitesHospital == 'Izvēlieties slimnīcu' || vizitesJob == 'Izvēlieties darbības jomu' || vizitesTime == 'Izvēlieties laiku'){
+    while (vizitesDate == 'Izvēlieties datumu' || vizitesDoctor == '' || vizitesHospital == '' || vizitesJob == 'Izvēlieties darbības jomu' || vizitesTime == 'Izvēlieties laiku'){
         alert("Ievadiet citus datus!")
         reload()
     }
@@ -109,10 +91,11 @@ function Submit(){
     alert("Paldies!\n Jūsu vizīte tika pieņemta!\n Lūdzu gaidat sava pieraksta datumu. Jūsu vizītes ir redzamas sadaļā Manas vizītes.")
 }
 getArsti()
+getSlimnicas()
+
 async function getArsti(){
   let response = await fetch('/arsti2')
   let data_json = await response.json()
-  console.log(data_json)
 
   let option = document.getElementById("doctor")
   option.innerHTML = "<option></option>"
@@ -122,6 +105,20 @@ async function getArsti(){
     option.innerHTML = option.innerHTML + arsts
   }
 }
+async function getSlimnicas(){
+  let response = await fetch('/adds')
+  let data_json = await response.json()
+  console.log(data_json)
+
+  let option2 = document.getElementById("hospital")
+  option2.innerHTML = "<option><option>";
+
+    for(let slimnicasSkaits of data_json){
+        slimnica = `<option>${slimnicasSkaits.name}<option>`
+        option2.innerHTML = option2.innerHTML + slimnica
+    }
+}
+
 
 </script>
 {% endblock %}
