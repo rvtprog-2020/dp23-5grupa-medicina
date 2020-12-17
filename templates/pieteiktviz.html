@@ -3,22 +3,22 @@
 {% block content %}
     <h1>Izvēlieties slimnīcu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
-        <form method="POST" action="{{url_for('pieteiktviz')}}">
-            <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
-            <option name="hospital">Izvēlieties slimnīcu</option>
-            <option name="hospital">Rīgas 1.slimnīca</option>
-            <option name="hospital">Rīgas 2.slimnīca</option>
-            <option name="hospital">Neatliekamāš medicīnas centrs</option>
-            <option name="hospital">Rīgas Austrumu slimnīca</option>
-            <option name="hospital">Jūrmalas slimnīca</option>
-            <option name="hospital">Paula Stradiņa slimnīca</option>
+        <form>
+            <select style="width: 1095px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="hospital" name="hospital">
+            <option>Izvēlieties slimnīcu</option>
+            <option>Rīgas 1.slimnīca</option>
+            <option>Rīgas 2.slimnīca</option>
+            <option>Neatliekamāš medicīnas centrs</option>
+            <option>Rīgas Austrumu slimnīca</option>
+            <option>Jūrmalas slimnīca</option>
+            <option>Paula Stradiņa slimnīca</option>
             </select>
         </form>
     </div>
     <h1>Izvēlieties darbības jomu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px;">
-        <form method="POST">
-            <select style="width: 1110px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none; outline:none;" id="job" name="job">
+        <form>
+            <select style="width: 1095px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none; outline:none;" id="job" name="job">
             <option>Izvēlieties darbības jomu</option>
             <option>Zobārsts</option>
             <option>Psihologs</option>

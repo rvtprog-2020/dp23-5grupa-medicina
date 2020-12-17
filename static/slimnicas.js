@@ -28,7 +28,6 @@ function insertNewRecord(data) {
     cell4.innerHTML = `<button class="b1" onClick="onEdit(this)">Rediģēt</button>
                        <button class="b1" onClick="onDelete(this)">Dzēst</button>`;
     
-}
 function resetForm() {
     document.getElementById("slimnica12").value = "";
     document.getElementById("location12").value = "";
