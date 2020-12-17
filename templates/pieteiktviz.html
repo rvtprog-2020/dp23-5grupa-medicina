@@ -40,7 +40,7 @@
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px;">
         <form method="POST">
             <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="date" name="date">
-            <option>Izvēlieties dienu</option>
+            <option>Izvēlieties datumu</option>
             <option>Pirmdiena</option>
             <option>Otrdiena</option>
             <option>Trešdiena</option>
@@ -71,6 +71,19 @@
             </select>
         </form>
     </div>
+    <h1>Izvēlieties ārstu</h1>
+    <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
+        <form method="POST">
+            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="doctor" name="doctor">
+                <option>Izvēlieties ārstu</option>
+                <option>Arvis Ceirulis</option>
+                <option>Valters Upenieks</option>
+                <option>Niks Veidemanis</option>
+                <option>Ralfs Filipjonoks</option>
+                <option>Ralfs Daniels Ūks</option>
+            </select>
+        </form>
+    </div>
     <button style="margin-top: 10px;" onclick="Submit()">Pieteikt vizīti</button>
     <div class="zina" style="width: 1000px; height: 100px; background-color:red;margin-left: 50px;">
         <h2>Uzmanību!</h2>
@@ -85,16 +98,21 @@ function Submit(){
     let vizitesDate = document.getElementById("date").value
     let vizitesJob = document.getElementById("job").value
     let vizitesHospital = document.getElementById("hospital").value
-    let masivs = [vizitesTime, vizitesDate, vizitesJob, vizitesHospital]
+    let vizitesDoctor = document.getElementById("doctor").value
+    while (vizitesDate == 'Izvēlieties datumu' || vizitesDoctor == 'Izvēlieties ārstu' || vizitesHospital == 'Izvēlieties slimnīcu' || vizitesJob == 'Izvēlieties darbības jomu' || vizitesTime == 'Izvēlieties laiku'){
+        alert("Ievadiet citus datus!")
+        reload()
+    }
+    
 
     fetch('/info',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({"time":vizitesTime,"date":vizitesDate,"job":vizitesJob,"hospital":vizitesHospital})        
+        body: JSON.stringify({"time":vizitesTime,"date":vizitesDate,"job":vizitesJob,"hospital":vizitesHospital, "doctor":vizitesDoctor})        
     })
-    location.reload()
+    alert("Paldies!\n Jūsu vizīte tika pieņemta!\n Lūdzu gaidat sava pieraksta datumu. Jūsu vizītes ir redzamas sadaļā Manas vizītes.")
 }
 </script>
 {% endblock %}

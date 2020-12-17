@@ -5,47 +5,27 @@
 <div style="background-color: rgb(207, 207, 207);border-radius: 10px; padding-left:5px; padding-right:5px; padding-top:5px;">
     <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
         <tr style="border: 1px solid black; height: 40px;">
-          <th style="border: 1px solid black; text-align: center;">Nr.</th>
-          <th style="border: 1px solid black; text-align: center;">Vizītes Nr.</th>
+          <th style="border: 1px solid black; text-align: center;">Vizītes ID</th>
           <th style="border: 1px solid black; text-align: center;">Slimnīca</th>
           <th style="border: 1px solid black; text-align: center;">Vizītes laiks</th>
           <th style="border: 1px solid black; text-align: center;">Ārsts</th>
           <th style="border: 1px solid black; text-align: center;">Darbības joma</th>
-          <th style="border: 1px solid black; text-align: center;">Atcelt</th>
+          <th style="border: 1px solid black; text-align: center;">Opcijas</th>
         </tr>
         <tr style="height: 40px;" id="pirmais">
-          <td style="border: 1px solid black; text-align: center;">1</td>
           <td style="border: 1px solid black; text-align: center;">3942823478</td>
           <td style="border: 1px solid black; text-align: center;">Rīgas Stradiņa</td>
           <td style="border: 1px solid black; text-align: center;">21.05.2020. 17:55</td>
           <td style="border: 1px solid black; text-align: center;">Arvis Ceirulis</td>
           <td style="border: 1px solid black; text-align: center;">Programmētājs</td>
-          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None()"></button></td>
-        </tr>
-        <tr style="height: 40px;" id="otrais">
-          <td style="border: 1px solid black; text-align: center;">2</td>
-          <td style="border: 1px solid black; text-align: center;">3942823478</td>
-          <td style="border: 1px solid black; text-align: center;" id="table_hospital">Rīgas Stradiņa</td>
-          <td style="border: 1px solid black; text-align: center;" id="table_date">21.05.2020. 17:55</td>
-          <td style="border: 1px solid black; text-align: center;">Ralfs Filipjonoks</td>
-          <td style="border: 1px solid black; text-align: center;" id="table_job">Programmētājs</td>
-          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;" onclick="None2()"></button></td>
+          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;"></button></td>
         </tr>
       </table>
       <div id="info"></div>
-      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;">Drukāt</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" >Drukāt</button>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
-      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="refresh()">Atjaunināt</button>
 </div>
 <script>
-  function None(){
-    let tableHTML = document.getElementById('pirmais')
-    tableHTML.innerHTML = " "
-  }
-  function None2(){
-    let tableHTML2 = document.getElementById('otrais')
-    tableHTML2.innerHTML = " "
-  }
   function labot(){
     let tableDate = document.getElementById('table_date')
     tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
@@ -63,27 +43,60 @@
     alert("Jūsu dati tika pieņemti.")
     }
   }
-  window.addEventListener("load", function(){
-    getInfo()
-})
+// test
+
+getInfo()
 
 async function getInfo(){
-    let response = await fetch('/info')
-    let data_json = await response.json()
+  let response = await fetch('/infos')
+  let data_json = await response.json()
 
-    console.log(data_json)
-    let info = document.getElementById('info')
-    info.innerHTML = ''
-
-    for(let information of data_json){
-        msgHTML = `<p>Vārds:${info.hospital} Uzvārds:${info.job}</p><button onclick="editUser('${info._id.$oid}')">Edit</button>`
+  console.log(data_json)
+  let info = document.getElementById('info')
+    console.log(info)
+    info.innerHTML = '<div></div>'
+  for(let informacija of data_json){
+        msgHTML = `<div>Vizītes ID:${informacija._id.$oid} Slimnīca:${informacija.hospital} Darbības joma:${informacija.job} Vizītes laiks:${informacija.date} ${informacija.time} Ārsts:${informacija.doctor}<button style="margin-right: 10px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt vizīti</button><button>Drukāt</button>`
         info.innerHTML = info.innerHTML + msgHTML
     }
-}
-function refresh(){
-    //let tabulasMasivs = localStorage.getItem('tabulas_masivs')
-    //console.log(tabulasMasivs)
-    let newDataHTML = "<div id=''>Jauni dati</div>"
   }
+async function editInfo(id){
+  let response = await fetch(`/info/${id}`)
+  let data = await response.json()
+
+  console.log(data)
+  console.log("Izmainīta informacija")
+
+  
+}
+async function deleteInfo(id){
+  let response = await fetch(`/info/${id}`)
+  let data_json_delete = await response.json()
+
+  console.log(data_json_delete)
+  console.log("Izdzēsta informacija")
+
+  fetch('/info/delete/<id>',{
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"time":data_json_delete.time,"date":data_json_delete.date,"job":data_json_delete.job,"hospital":data_json_delete.hospital, "doctor":data_json_delete.doctor, "id":data_json_delete._id.$oid})
+  })
+  alert("Dati tika izdzēsti!")
+
+}
+async function printInfo(id){
+  let response = await fetch(`/info/${id}`)
+  let data_json_delete = await response.json()
+
+  fetch('/info/print/<id>',{
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"time":data_json_delete.time,"date":data_json_delete.date,"job":data_json_delete.job,"hospital":data_json_delete.hospital, "doctor":data_json_delete.doctor, "id":data_json_delete._id.$oid})
+  })
+}
 </script>
 {% endblock %}
