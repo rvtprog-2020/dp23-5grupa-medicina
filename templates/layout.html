@@ -16,17 +16,17 @@
 <body class="parlized">
     
     <div class="topline">
-        {%if session['username'] == request.form['username']%}
-        
-        {%else%}
+        {%if session['status'] == 1%}
         <h6 class="pies">Pieslēdzies kā {{username}} (<a class="url" href='/logout'>izrakstīties</a>)</h6>
+        {%else%}
+        
         {%endif%}
     </div>
 
     <div class="container">
         <div class="title">
             <h1 style="color: white; font-size:72px;">E-veselība</h1>
-            Piektdiena, 2020 gada 14. decembris
+            <b><span id="diena"></span></b>, 2020 gada <span id="datums"></span>. <span id="menesis"></span>.
         </div>
     <div class="middleline"></div>
     
@@ -86,7 +86,7 @@
 
         </ul>
         <div class="alert alert-warning center-block" role="alert">
-            <h style="color:black;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><a href="https://news.google.com/covid19/map?hl=lv&mid=%2Fm%2F04g5k&gl=LV&ceid=LV%3Alv"> Uzzināt vairāk...</a>
+            <h style="color:black; font-size:17px;">Esat uzmanīgi publiskās vietās, velciet sejas maskas un ieturiet 2 metru distanci, sargājiet savus mīļotos un slēpjaties bunkuros.</h><a style="font-size:15px;" href="https://news.google.com/covid19/map?hl=lv&mid=%2Fm%2F04g5k&gl=LV&ceid=LV%3Alv"> Uzzināt vairāk...</a>
         </div>
     <div style="padding-left:15px; padding-right: 15px">
     {% block content %}
@@ -100,5 +100,12 @@
 </html>
 
 
+<script>
+var d = new Date();
+var days = ["Svētdiena","Pirmdiena","Otrdiena","Trešdiena","Ceturtdiena","Piektdiena","Sestdiena"];
+var months = ["Janvāris","Februāris","Marts","Aprīlis","Maijs","Jūnijs","Jūlijs","Augusts","Septembris","Oktobris","Novembris","Decembris"];
+document.getElementById("diena").innerHTML = days[d.getDay()]
+document.getElementById("datums").innerHTML = d.getDate();
+document.getElementById("menesis").innerHTML = months[d.getMonth()]
 
-   
+</script>

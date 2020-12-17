@@ -15,12 +15,32 @@ db = client.medicina
 # tabulas / dokumenti
 users_db = db.users
 info_db = db.info
+add_db = db.add
 # info1 = {"time":"9:00","date":"Otrdiena","job":"Psihologs","hospital":"Rīgas Austrumu slimnīca","doctor":"Valters Upenieks"}
 # info_db.insert_one(info1)
 # exit()
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
+
+@app.route('/add', methods = ['GET','POST'])	
+def add():	
+    if request.method == 'POST':	
+        dati = request.json	
+        add_db.insert_one({"name":dati['name'], "location":dati['location'], "start":dati['start'], "end":dati['end']})	
+        return {"messange":"New hospital created!"}	
+    else:
+        info_db.find_one()
+        return {"error":"Method or content type not supported!"} 
+
+@app.route('/adds', methods = ['GET','POST'])
+def addID():
+    add_data = add_db.find()
+    if add_data:
+        return dumps(add_data)
+    else:
+        return {"error":"No hospital in DB"}
+
 @app.route('/info/print/<id>', methods = ['GET','POST']) #Drukāt nav pabeigts!
 def printId(id):
     info = info_db.find({"_id":ObjectId(id)})
@@ -76,31 +96,33 @@ def home():
 @app.route('/login', methods=['POST'])
 def login():
     users = db.users
-    login_user = users.find_one({'name': request.form['username']})
-
+    login_user = users.find_one({'username': request.form['username']})
+    
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
+            session['status'] = 1
             return redirect(url_for('home'))
-    return 'Nepareizs lietotājvards vai parole!'
+    return render_template('loginpage.html', error = 'Nepareizs lietotājvārds vai parole!')
 
 @app.route('/logout')
 def logout():
-	session.pop('username', None)
-	return redirect('/')
-
+	session.pop('username', None), session.pop('status', None)
+	return redirect('/') 
+    
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         users = db.users
-        existing_user = users.find_one({'name' : request.form['username']})
+        existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'name':request.form['username'], 'password': hashpass})
+            users.insert({'name':request.form['name'], 'surname':request.form['surname'], 'username':request.form['username'], 'email':request.form['email'], 'password': hashpass, 'personalcode':request.form['per1'] +'-'+ request.form['per2'], 'telephone':request.form['tel']})
             session['username'] =  request.form['username']
+            session['status'] = 1
             return redirect(url_for('home'))
-
+        error = "That username already exists!"
         return 'That username already exists!'
 
     return render_template('register.html')
@@ -163,32 +185,32 @@ def adminPanelSlimnicas():
 
 #### Skolotāja kods ####
 
-# @app.route('/users')
-# def users():
-#     users_data = users_db.find()
-#     if users_data:
-#         return dumps(users_data)
-#     else:
-#         return {"error":"No users in DB"}
+@app.route('/users')
+def users():
+    users_data = db.users.find()
+    if users_data:
+        return dumps(users_data)
+    else:
+        return {"error":"No users in DB"}
 
-#     return "1"
+    return "1"
 
-# @app.route('/user/<id>')
-# def user(id):
-#     user = users_db.find_one({"_id":ObjectId(id)})
-#     if user:
-#         return dumps(user)
-#     else:
-#         return {"error":"User not found!"}
+@app.route('/user/<id>')
+def user(id):
+    user = db.users.find_one({"_id":ObjectId(id)})
+    if user:
+        return dumps(user)
+    else:
+        return {"error":"User not found!"}
 
-# @app.route('/user/create', methods = ['POST'])
-# def createUser():
-#     if request.method == 'POST' and request.content_type == 'application/json':    
-#         dati = request.json
-#         users_db.insert_one({"vards":dati['vards'], "uzvards":dati['uzvards'], "status":dati['status']})
-#         return {"messange":"User created!"}
-#     else:
-#         return {"error":"Method or content type not supported!"}
+@app.route('/user/create', methods = ['POST'])
+def createUser():
+    if request.method == 'POST' and request.content_type == 'application/json':    
+        dati = request.json
+        db.users.find_one({"vards":dati['vards'], "uzvards":dati['uzvards'], "status":dati['status']})
+        return {"messange":"User created!"}
+    else:
+        return {"error":"Method or content type not supported!"}
 
     
 app.run(host="0.0.0.0", port=80, debug=True)
