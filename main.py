@@ -159,18 +159,6 @@ def adminPanel2():
 
 @app.route('/adminPanelSlimnicas')
 def adminPanelSlimnicas():
-<<<<<<< HEAD
-
-    return render_template('adminPanelSlimnicas.html')
-
-@app.route('/AdminAktualitates')
-def AdminAktualitates():
-    return render_template('AdminAktualitates.html')
-    if 'user' in session:
-        if session['user'] == 'admin@gmail.com':
-            return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = 'admin')
-    return render_template('adminPanelSlimnicas.html', data = db.test.find(), status = None)
-=======
     if session['username'] == 'admin':
         return render_template('adminpanelslimnicas.html',username=session['username'], data = db.users.find(), status = 'admin')
     return 'Tu neesi admins!'
@@ -204,7 +192,6 @@ def createUser():
     else:
         return {"error":"Method or content type not supported!"}
 
->>>>>>> 17fcae10f82d5f50e91cc2c77dcd69d6a3380497
     
 
 app.run(host="0.0.0.0", port=80, debug=True)
