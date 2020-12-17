@@ -47,6 +47,11 @@
     let hospitalStart = document.getElementById("darbalaikssakums").value;
     let hospitalEnd = document.getElementById("darbalaiksbeigas").value;
     console.log(hospitalName, hospitalLocation, hospitalStart, hospitalEnd);
+
+    while (hospitalName == '' || hospitalLocation == '' || hospitalStart == '' || hospitalEnd == ''){
+        alert("Ievadiet citus datus!")
+        reload()
+    }
     fetch('/add',{
         method:'POST',
         headers:{
@@ -61,7 +66,7 @@ async function getInfo(){
   let response = await fetch('/adds')
   let data_json = await response.json()
   console.log(data_json)
-  
+
 }
 </script>
 {% endblock %}

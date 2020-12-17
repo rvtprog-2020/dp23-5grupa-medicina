@@ -68,7 +68,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<tr></tr>'
   for(let informacija of data_json){
-        msgHTML1 = `<td style="border: 1px solid black; text-align: center;">${informacija._id.$oid}</td>`
+        msgHTML1 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;">${informacija._id.$oid}</td>`
         info.innerHTML = info.innerHTML + msgHTML1
     }
   }
@@ -82,7 +82,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<tr></tr>'
   for(let informacija of data_json){
-        msgHTML = `<td style="border: 1px solid black; text-align: center;"> ${informacija.hospital}</td>`
+        msgHTML = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.hospital}</td>`
         info.innerHTML = info.innerHTML + msgHTML
     }
   }
@@ -96,7 +96,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<tr></tr>'
   for(let informacija of data_json){
-        msgHTML3 = `<td style="border: 1px solid black; text-align: center;"> ${informacija.date} ${informacija.time}</td>`
+        msgHTML3 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.date} ${informacija.time}</td>`
         info.innerHTML = info.innerHTML + msgHTML3
     }
   }
@@ -110,7 +110,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<tr></tr>'
   for(let informacija of data_json){
-        msgHTML4 = `<td style="border: 1px solid black; text-align: center;"> ${informacija.doctor}</td>`
+        msgHTML4 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.doctor}</td>`
         info.innerHTML = info.innerHTML + msgHTML4
     }
   }
@@ -124,7 +124,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<tr></tr>'
   for(let informacija of data_json){
-        msgHTML5 = `<td style="border: 1px solid black; text-align: center;"> ${informacija.job}</td>`
+        msgHTML5 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.job}</td>`
         info.innerHTML = info.innerHTML + msgHTML5
     }
   }
@@ -138,7 +138,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<tr></tr>'
   for(let informacija of data_json){
-        msgHTML6 = `<td><button style="margin-right: 10px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt vizīti</button><button>Drukāt</button></td>`
+        msgHTML6 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"><button style="margin-right: 10px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt vizīti</button><button>Drukāt</button></td>`
         info.innerHTML = info.innerHTML + msgHTML6
     }
   }
