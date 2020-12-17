@@ -29,6 +29,7 @@
           <td id="info6"></td>
         </tr>
       </table>
+      <table id="infotest"></table>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" >Drukāt</button>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
 </div>
@@ -53,96 +54,20 @@
 // test
 
 getInfo()
-getInfo2()
-getInfo3()
-getInfo4()
-getInfo5()
-getInfo6()
 
 async function getInfo(){
   let response = await fetch('/infos')
   let data_json = await response.json()
 
   console.log(data_json)
-  let info = document.getElementById('info')
+  let info = document.getElementById('infotest')
     console.log(info)
-    info.innerHTML = '<tr></tr>'
+    info.innerHTML = '<div></div>'
   for(let informacija of data_json){
-        msgHTML1 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;">${informacija._id.$oid}</td>`
+        msgHTML1 = `<div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;  height: 50px; width:185px;">${informacija._id.$oid}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;  height: 50px; width:166px;">${informacija.hospital}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:100px;">${informacija.date} ${informacija.time}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:120px;">${informacija.doctor}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:166px;">${informacija.job}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:166px;">${informacija.hospital}</div><div style="width:165.99px;border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:170px;"><button style="height: 30px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="height: 30px; background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt</button><button style="height: 30px;">Drukāt</button></div>`
         info.innerHTML = info.innerHTML + msgHTML1
     }
   }
-
-  async function getInfo2(){
-  let response = await fetch('/infos')
-  let data_json = await response.json()
-
-  console.log(data_json)
-  let info = document.getElementById('info2')
-    console.log(info)
-    info.innerHTML = '<tr></tr>'
-  for(let informacija of data_json){
-        msgHTML = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.hospital}</td>`
-        info.innerHTML = info.innerHTML + msgHTML
-    }
-  }
-
-  async function getInfo3(){
-  let response = await fetch('/infos')
-  let data_json = await response.json()
-
-  console.log(data_json)
-  let info = document.getElementById('info3')
-    console.log(info)
-    info.innerHTML = '<tr></tr>'
-  for(let informacija of data_json){
-        msgHTML3 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.date} ${informacija.time}</td>`
-        info.innerHTML = info.innerHTML + msgHTML3
-    }
-  }
-
-  async function getInfo4(){
-  let response = await fetch('/infos')
-  let data_json = await response.json()
-
-  console.log(data_json)
-  let info = document.getElementById('info4')
-    console.log(info)
-    info.innerHTML = '<tr></tr>'
-  for(let informacija of data_json){
-        msgHTML4 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.doctor}</td>`
-        info.innerHTML = info.innerHTML + msgHTML4
-    }
-  }
-
-  async function getInfo5(){
-  let response = await fetch('/infos')
-  let data_json = await response.json()
-
-  console.log(data_json)
-  let info = document.getElementById('info5')
-    console.log(info)
-    info.innerHTML = '<tr></tr>'
-  for(let informacija of data_json){
-        msgHTML5 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"> ${informacija.job}</td>`
-        info.innerHTML = info.innerHTML + msgHTML5
-    }
-  }
-
-  async function getInfo6(){
-  let response = await fetch('/infos')
-  let data_json = await response.json()
-
-  console.log(data_json)
-  let info = document.getElementById('info6')
-    console.log(info)
-    info.innerHTML = '<tr></tr>'
-  for(let informacija of data_json){
-        msgHTML6 = `<td style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;"><button style="margin-right: 10px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt vizīti</button><button>Drukāt</button></td>`
-        info.innerHTML = info.innerHTML + msgHTML6
-    }
-  }
-  
   
 async function editInfo(id){
   let response = await fetch(`/info/${id}`)
