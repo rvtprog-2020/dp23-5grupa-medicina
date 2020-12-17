@@ -15,12 +15,32 @@ db = client.medicina
 # tabulas / dokumenti
 users_db = db.users
 info_db = db.info
+add_db = db.add
 # info1 = {"time":"9:00","date":"Otrdiena","job":"Psihologs","hospital":"Rīgas Austrumu slimnīca","doctor":"Valters Upenieks"}
 # info_db.insert_one(info1)
 # exit()
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
+
+@app.route('/add', methods = ['GET','POST'])	
+def add():	
+    if request.method == 'POST':	
+        dati = request.json	
+        add_db.insert_one({"name":dati['name'], "location":dati['location'], "start":dati['start'], "end":dati['end']})	
+        return {"messange":"New hospital created!"}	
+    else:
+        info_db.find_one()
+        return {"error":"Method or content type not supported!"} 
+
+@app.route('/adds', methods = ['GET','POST'])
+def addID():
+    add_data = add_db.find()
+    if add_data:
+        return dumps(add_data)
+    else:
+        return {"error":"No hospital in DB"}
+
 @app.route('/info/print/<id>', methods = ['GET','POST']) #Drukāt nav pabeigts!
 def printId(id):
     info = info_db.find({"_id":ObjectId(id)})
