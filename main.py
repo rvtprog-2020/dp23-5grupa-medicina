@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 import bcrypt
+import pymongo
 
 app = Flask(__name__)
 
@@ -192,5 +193,37 @@ def createUser():
     else:
         return {"error":"Method or content type not supported!"}
 
-    
+
+
+
+### TEST
+
+# @app.route('/arsti')
+# def test():
+#     if session['username'] == 'admin':
+#         return render_template('arsti.html',username=session['name'], data = db.users.find(), status = 'admin')
+#     return render_template('arsti.html',username=session['name'], data = db.users.find(), status = 'admin')
+
+
+# @app.route('/arsts', methods = ['GET','POST'])
+# def arsts():
+#     arsts_data = db.arsts.find()
+#     if arsts_data:
+#         return dumps(arsts_data)
+        
+# @app.route('/arsts')
+# def arsts():
+#     db.userdetails.insert({"name" : 'Niks',"surname" : "Veidemanis"})    
+@app.route('/arsti')
+def arsti():
+
+    mydb = client['medicina']
+    mycol = mydb['arsts']
+    name = db.arsts.find_one({"name" : "Niks"})
+    for x in mycol.find():
+        return render_template('arsti.html', name=name)
+    print('Done')
+
+
+
 app.run(host="0.0.0.0", port=80, debug=True)

@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% set active_page = 'arsti' %}
+{% block content %}
+
+
+<h6>{{user.name}}</h6>
+<h6>{{user.surname}}</h6>
+{{"_id"}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<label class="page1">Meklēt ārstu pēc slimnīcas</label>
+<div class="tooltips" title="Please select the country that the customer will primarily be served from">
+    <select id="country" name="country" placeholder="Phantasyland">
+        <option></option>
+        <option>Germany</option>
+        <option>Spain</option>
+        <option>Hungary</option>
+        <option>USA</option>
+        <option>Mexico</option>
+        <option>South Africa</option>
+        <option>China</option>
+        <option>Russia</option>
+    </select>
+</div>
+<br />
+<br />
+<label class="page1">Location</label>
+<div class="tooltips" title="Please select the city that the customer is primarily to be served from.">
+    <select id="location" name="location" placeholder="Anycity"></select>
+</div> -->
+
+<script>
+//     jQuery(function($) {
+//     var locations = {
+//         'Germany': ['Duesseldorf', 'Leinfelden-Echterdingen', 'Eschborn'],
+//         'Spain': ['Barcelona'],
+//         'Hungary': ['Pecs'],
+//         'USA': ['Downers Grove'],
+//         'Mexico': ['Puebla'],
+//         'South Africa': ['Midrand'],
+//         'China': ['Beijing'],
+//         'Russia': ['St. Petersburg'],
+//     }
+    
+//     var $locations = $('#location');
+//     $('#country').change(function () {
+//         var country = $(this).val(), lcns = locations[country] || [];
+        
+//         var html = $.map(lcns, function(lcn){
+//             return '<option value="' + lcn + '">' + lcn + '</option>'
+//         }).join('');
+//         $locations.html(html)
+//     });
+// });
+
+
+// co(function*() {
+//   var db = yield MongoClient.connect('mongodb://localhost:27017/test');
+
+//   // Create a collection
+//   var collection = db.collection('simple_explain_collection_with_generators');
+
+//   // Insert some documents we can sort on
+//   yield collection.insertMany([{a:1}, {a:2}, {a:3}], {w:1});
+
+//   // Do normal ascending sort
+//   yield collection.find().explain();
+//   db.close();
+// });
+
+// const {MongoClient} = require('mongodb');
+// const uri = "mongodb+srv://niks:BgizhM1Zh1HYAgw1@dp23-5grupa-medicina.1bqly.mongodb.net/medicina?retryWrites=true&w=majority";
+// const users = new MongoClient(uri);
+// await client.connect();
+// await listDatabases(client);
+
+// async function listDatabases(client){
+//     databasesList = await client.db().users().listDatabases();
+ 
+//     console.log("Databases:");
+//     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+// };
+ 
+
+
+// Connection url
+
+// window.onload = function() {
+//   arsts()
+// async function arsts(){
+// let response = await fetch('/arsts')
+// let data_json = await response.json()
+
+// console.log(data_json)
+// let arsts = document.getElementById('arsts')
+//   console.log(arsts)
+//   arsts.innerHTML = '<tr></tr>'
+// for(let informacija of data_json){
+//         msgHTML1 = `<td style="border: 1px solid black; text-align: center;">${informacija._id.$oid}</td>`
+//         arsts.innerHTML = arsts.innerHTML + msgHTML1
+//     }
+//   }
+// }
+
+
+</script>
+
+
+
+{% endblock %}

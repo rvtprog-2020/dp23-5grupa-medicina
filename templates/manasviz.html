@@ -80,7 +80,7 @@ async function getInfo(){
   console.log(data_json)
   let info = document.getElementById('info2')
     console.log(info)
-    info.innerHTML = '<tr></tr>'
+    info.innerHTML = null
   for(let informacija of data_json){
         msgHTML = `<td style="border: 1px solid black; text-align: center;"> ${informacija.hospital}</td>`
         info.innerHTML = info.innerHTML + msgHTML
