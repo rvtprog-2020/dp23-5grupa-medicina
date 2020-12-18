@@ -72,7 +72,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<div></div>'
     for(let informacija of data_json){
-        msg = `<div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:400px;">${informacija.name}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:400px;">${informacija.location}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:185px;">${informacija.start}-${informacija.end}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:100px;"><button>Labot</button></div>`
+        msg = `<div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex; float: left; height: 50px; width:400px;">${informacija.name}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex; float: left;  height: 50px; width:400px;">${informacija.location}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex; float: left;  height: 50px; width:185px;">${informacija.start}-${informacija.end}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex; float: left; height: 50px; width:100px;"><button>Labot</button></div>`
         info.innerHTML = info.innerHTML + msg
     }
 }
