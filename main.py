@@ -16,12 +16,26 @@ db = client.medicina
 users_db = db.users
 info_db = db.info
 add_db = db.add
+arsts_db = db.arsts
 # info1 = {"time":"9:00","date":"Otrdiena","job":"Psihologs","hospital":"Rīgas Austrumu slimnīca","doctor":"Valters Upenieks"}
 # info_db.insert_one(info1)
 # exit()
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
+
+@app.route('/arsti')
+def arsti():
+    return render_template('arsti.html')
+
+@app.route('/arsti2', methods = ['GET','POST'])
+def arsti2():
+    arsts_data = arsts_db.find()
+    if arsts_data:
+        return dumps(arsts_data)
+    else:
+        return {"error":"No users in DB"}
+    return "1"
 
 @app.route('/add', methods = ['GET','POST'])	
 def add():	
@@ -58,7 +72,7 @@ def infoDelete(id):
     else:
         return {"message":"Vizīte netika izdzēsta!"}
 
-@app.route('/infos', methods = ['GET','POST'])
+@app.route('/infos', methods = ['GET','POST']) #Ķļūda dēl Ārstiem!
 def infos():
     info_data = info_db.find()
     if info_data:

@@ -59,4 +59,3 @@ function onDelete(td) {
         resetForm();
     }
 }
-
