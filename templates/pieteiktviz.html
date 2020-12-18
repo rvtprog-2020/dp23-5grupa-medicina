@@ -53,7 +53,7 @@
     </div>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
         <form method="POST">
-            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="time" name="time">
+            <select style="width: 575px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="time" name="time">
                 <option>Izvēlieties laiku</option>
                 <option>8:00</option>
                 <option>9:00</option>
@@ -74,7 +74,7 @@
     <h1>Izvēlieties ārstu</h1>
     <div style="background-color: white; border-radius: 40px; height: 45px; border-color: gray; border-style: solid; border-width: 1px; width: 315px; margin-top: 5px;">
         <form method="POST">
-            <select style="width: 300px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="doctor" name="doctor">
+            <select style="width: 575px; height: 30px; border-radius: 40px; margin-top: 6px; margin-left: 5px; outline:none;" id="doctor" name="doctor">
                 <option>Izvēlieties ārstu</option>
                 <option>Arvis Ceirulis</option>
                 <option>Valters Upenieks</option>
@@ -104,7 +104,6 @@ function Submit(){
         reload()
     }
     
-
     fetch('/info',{
         method:'POST',
         headers:{

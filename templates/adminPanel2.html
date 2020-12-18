@@ -5,53 +5,85 @@
 <table>
   <tr>
       <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-        <h2>Administrātora panelis</h2>
+        <h1>Administrātora panelis</h1>
         <!--Slimnīcas nosaukums-->
-        <h3>Ievadiet slimnīcas nosaukumu :</h3>
-            <div class="adminpanel1">
-                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" id="slimnicasnosaukums" type="text">
-            </div>
+        <h3>Izvēlieties slimnīcu</h3>
+        <form>
+            <select style="width: 575px; height: 30px; border-radius: 40px; margin-top: 6px; outline:none;" id="slimnica22" name="hospital">
+            <option>Izvēlieties slimnīcu</option>
+            <option>Rīgas 1.slimnīca</option>
+            <option>Rīgas 2.slimnīca</option>
+            <option>Neatliekamāš medicīnas centrs</option>
+            <option>Rīgas Austrumu slimnīca</option>
+            <option>Jūrmalas slimnīca</option>
+            <option>Paula Stradiņa slimnīca</option>
+            </select>
+        </form>
+    </div>
+    <br><br>
+    <h3>Izvēlieties ārsta profesiju</h3>
+        <form>
+            <select style="width: 575px; height: 30px; border-radius: 40px; margin-top: 6px; outline:none; outline:none;" id="profesija" name="job">
+            <option>Izvēlieties darbības jomu</option>
+            <option>Zobārsts</option>
+            <option>Psihologs</option>
+            <option>Neirologs</option>
+            <option>Ķirurgs</option>
+            <option>Anesteziologs</option>
+            <option>Endokrinologs</option>
+            <option>Infektologs</option>
+            <option>Podologs</option>
+            <option>Optometrists</option>
+            <option>Masieris</option>
+            <option>Fizioterapēts</option>
+            <option>Urologs</option>
+            <option>Radiologs</option>
+            </select>
+        </form>
+    </div>
         <br><br>
-        <!--Ārsta profesija-->
-        <h3>Ievadiet ārsta profesiju :</h3>
-            <div class="adminpanel10">
-                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet slimnīcas nosaukumu kurā strādā ārsts" id="arstaprofesija" type="text">   
-            </div>
-        <br><br>
-        <!--Ārsta vārds-->
         <h3>Ievadiet ārsta vārdu un uzvārdu :</h3>
             <div class="adminpanel8">
-                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet ārsta vārdu" id="arstavards" type="text">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet ārsta vārdu" id="arstavards" type="text" minlength="4" maxlength="20">
             </div>
         <br><br>
         <!--Ārsta darba laiks-->
         <h3>Ievadiet ārsta darba laiku :</h3>
             <div class="adminpanel8">
-                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet ārsta darba laiku" id="arstalaiks" type="text">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet ārsta darba laiku" id="arstalaiks" type="text" pattern="\d*">
             </div>
         <br><br>
         <!--POGA-->
         <div  class="form-action-buttons">
-            <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;"
-            type="Submit" 
-            value="Submit">Pievienot</button>
+            <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="Submit" value="Submit">Pievienot</button>
         </div>
       </form>
   </tr>
 </table>
-  <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;" id="arstainfo11" class="boomer">
-    <thead>
-      <tr style="border: 1px solid black; height: 40px;">
-        <th style="border: 1px solid black; text-align: center;">Slimnīca kurā strāda ārsts</th>
-        <th style="border: 1px solid black; text-align: center;">Specialitāte</th>
-        <th style="border: 1px solid black; text-align: center;">Ārsts</th>
-        <th style="border: 1px solid black; text-align: center;">Ārsta darba laiks</th>
-        <th style="border: 1px solid black; text-align: center;">Opcijas</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-    </tbody>
 </div>
 <script src="/static/adminpanel2.js"></script>
+<script>
+function add(){
+    let hospitalnosaukums = document.getElementById("slimnicasnosaukums").value;
+    let hospitalproff = document.getElementById("arstaprofesija").value;
+    let hospitalWorkname = document.getElementById("arstavards").value;
+    let hospitalWorktime = document.getElementById("arstalaiks").value;
+    console.log(hospitalnosaukums, hospitalproff, hospitalStart, hospitalEnd);
+    fetch('/arsts',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"hospital":hospitalnosaukums,"Specaialty":hospitalproff,"arstavards":hospitalWorkname,"arstalaiks":hospitalWorktime})        
+    })
+alert("Paldies!\n Slimnīca tika pieņemta!\n Veiksmi darbā!")
+}
+getInfo()
+async function getInfo(){
+  let response = await fetch('/arsts')
+  let data_json = await response.json()
+  console.log(data_json)
+  
+}
+</script>
 {% endblock %}

@@ -59,4 +59,4 @@ function onDelete(td) {
         resetForm();
     }
 }
-// Mazā Ralfa kods!
+
