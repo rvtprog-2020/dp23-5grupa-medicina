@@ -17,11 +17,12 @@
                 <br><br>
                 <h3>Ievadiet slimnīcas darba laiku :</h3>
                     <div class="adminpanel10">
-                        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet slimnīcas darba laiku" id="darbalaiks" type="text">   
+                        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 250px; margin-right: 5px;" placeholder="Ievadiet slimnīcas sākuma darba laiku" id="darbalaikssakums" type="text">-
+                        <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 250px;" placeholder="Ievadiet slimnīcas beigu darba laiku" id="darbalaiksbeigas" type="text">      
                     </div>
                 <br><br>
                 <div class="adminbutt">
-                    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;">Pievienot</button>
+                    <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" onclick="add()">Pievienot</button>
                 </div>
             </form>
     </tr>
@@ -39,4 +40,33 @@
 
     </tbody>
 <script src="/static/slimnicas.js"></script>
+<script>
+    function add(){
+    let hospitalName = document.getElementById("slimnica12").value;
+    let hospitalLocation = document.getElementById("location12").value;
+    let hospitalStart = document.getElementById("darbalaikssakums").value;
+    let hospitalEnd = document.getElementById("darbalaiksbeigas").value;
+    console.log(hospitalName, hospitalLocation, hospitalStart, hospitalEnd);
+
+    while (hospitalName == '' || hospitalLocation == '' || hospitalStart == '' || hospitalEnd == ''){
+        alert("Ievadiet citus datus!")
+        reload()
+    }
+    fetch('/add',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"name":hospitalName,"location":hospitalLocation,"start":hospitalStart,"end":hospitalEnd})        
+    })
+alert("Paldies!\n Slimnīca tika pieņemta!\n Veiksmi darbā!")
+}
+getInfo()
+async function getInfo(){
+  let response = await fetch('/adds')
+  let data_json = await response.json()
+  console.log(data_json)
+
+}
+</script>
 {% endblock %}

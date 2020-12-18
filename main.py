@@ -16,12 +16,46 @@ db = client.medicina
 # tabulas / dokumenti
 users_db = db.users
 info_db = db.info
+add_db = db.add
+arsts_db = db.arsts
 # info1 = {"time":"9:00","date":"Otrdiena","job":"Psihologs","hospital":"Rīgas Austrumu slimnīca","doctor":"Valters Upenieks"}
 # info_db.insert_one(info1)
 # exit()
 # user1 = {"Lietotaja vards":"Maris007", "Vards":"Maris", "Uzvards":"Danne", "Personas kods":"11111-11111", "Parole":"maris123", "E-pasts":"maritis@inbox.lv", "Talrunis":"27722195", "status":"admin"}
 # users_db.insert_one(user1)
 # exit()
+
+@app.route('/arsti')
+def arsti():
+    return render_template('arsti.html')
+
+@app.route('/arsti2', methods = ['GET','POST'])
+def arsti2():
+    arsts_data = arsts_db.find()
+    if arsts_data:
+        return dumps(arsts_data)
+    else:
+        return {"error":"No users in DB"}
+    return "1"
+
+@app.route('/add', methods = ['GET','POST'])	
+def add():	
+    if request.method == 'POST':	
+        dati = request.json	
+        add_db.insert_one({"name":dati['name'], "location":dati['location'], "start":dati['start'], "end":dati['end']})	
+        return {"messange":"New hospital created!"}	
+    else:
+        info_db.find_one()
+        return {"error":"Method or content type not supported!"} 
+
+@app.route('/adds', methods = ['GET','POST'])
+def addID():
+    add_data = add_db.find()
+    if add_data:
+        return dumps(add_data)
+    else:
+        return {"error":"No hospital in DB"}
+
 @app.route('/info/print/<id>', methods = ['GET','POST']) #Drukāt nav pabeigts!
 def printId(id):
     info = info_db.find({"_id":ObjectId(id)})
@@ -39,7 +73,7 @@ def infoDelete(id):
     else:
         return {"message":"Vizīte netika izdzēsta!"}
 
-@app.route('/infos', methods = ['GET','POST'])
+@app.route('/infos', methods = ['GET','POST']) #Ķļūda dēl Ārstiem!
 def infos():
     info_data = info_db.find()
     if info_data:
@@ -214,15 +248,15 @@ def createUser():
 # @app.route('/arsts')
 # def arsts():
 #     db.userdetails.insert({"name" : 'Niks',"surname" : "Veidemanis"})    
-@app.route('/arsti')
-def arsti():
+# @app.route('/arsti')
+# def arsti():
 
-    mydb = client['medicina']
-    mycol = mydb['arsts']
-    name = db.arsts.find_one({"name" : "Niks"})
-    for x in mycol.find():
-        return render_template('arsti.html', name=name)
-    print('Done')
+#     mydb = client['medicina']
+#     mycol = mydb['arsts']
+#     name = db.arsts.find_one({"name" : "Niks"})
+#     for x in mycol.find():
+#         return render_template('arsti.html', name=name)
+#     print('Done')
 
 
 
