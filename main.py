@@ -42,6 +42,15 @@ def arsti2():
         return {"error":"No users in DB"}
     return "1"
 
+@app.route('/arstia', methods = ['GET','POST'])
+def arstiAdd():
+    if request.method == 'POST':
+        dati = request.json
+        arsts_db.insert_one({"name":dati['arstavards'],"surname":dati['arstauzvards'],"hospital":dati['hospital'],"job":dati['Specaialty']}) #Ārsta laiks nav pievienots!
+        return {"message":"Arsts pievienots!"}
+    else:
+        return{"Error":"Arsts nav pievienots!"}
+
 @app.route('/add', methods = ['GET','POST'])	
 def add():	
     if request.method == 'POST':	
@@ -49,7 +58,7 @@ def add():
         add_db.insert_one({"name":dati['name'], "location":dati['location'], "start":dati['start'], "end":dati['end']})	
         return {"messange":"New hospital created!"}	
     else:
-        info_db.find_one()
+        add_db.find_one()
         return {"error":"Method or content type not supported!"} 
 
 @app.route('/adds', methods = ['GET','POST'])
