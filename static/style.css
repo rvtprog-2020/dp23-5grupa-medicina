@@ -292,3 +292,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.manviz{
+    border: 1px solid black;
+    align-items : center;
+    justify-content: center;
+    display: inline-flex; 
+    float:left;
+}
