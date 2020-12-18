@@ -3,11 +3,13 @@
 {% block content %}
 
 <h1><b>Ārstu saraksts</b></h1>
+<input id="meklesana" placeholder="Meklēt ārstu pēc slimnīcas"></input><button style="margin-left: 10px;" onclick="submit()">Meklēt</button>
 <hr>
-<div id="arsti">lol</div>
+<div id="arsti"></div>
 
 
 <script>
+
 getArsts()
 async function getArsts(){
   let response = await fetch('/arsti2')
@@ -22,5 +24,6 @@ async function getArsts(){
         info.innerHTML = info.innerHTML + msgHTML
     }
   }
+
 </script>
 {% endblock %}

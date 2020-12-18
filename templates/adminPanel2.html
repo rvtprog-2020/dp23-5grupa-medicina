@@ -69,6 +69,7 @@
 </div>
 <script src="/static/adminpanel2.js"></script>
 <script>
+getSlimnicas()
 function add(){
     let hospitalNosaukums = document.getElementById("slimnica22").value;
     let hospitalProff = document.getElementById("profesija").value;
@@ -84,6 +85,20 @@ function add(){
         body: JSON.stringify({"hospital":hospitalNosaukums,"Specaialty":hospitalProff,"arstavards":hospitalWorkname,"arstalaiks":hospitalWorktime,"arstauzvards":surname})        
     })
 alert("Paldies!\n Slimnīca tika pievienota datubāzei!\n Veiksmi darbā!")
+}
+
+async function getSlimnicas(){
+  let response = await fetch('/adds')
+  let data_json = await response.json()
+  console.log(data_json)
+
+  let option2 = document.getElementById("slimnica22")
+  option2.innerHTML = "<option><option>";
+
+    for(let slimnicasSkaits of data_json){
+        slimnica = `<option>${slimnicasSkaits.name}<option>`
+        option2.innerHTML = option2.innerHTML + slimnica
+    }
 }
 </script>
 {% endblock %}
