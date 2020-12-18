@@ -39,6 +39,7 @@
     <tbody>
 
     </tbody>
+<div id="infotest"></div>
 <script src="/static/slimnicas.js"></script>
 <script>
     function add(){
@@ -67,6 +68,13 @@ async function getInfo(){
   let data_json = await response.json()
   console.log(data_json)
 
+  let info = document.getElementById('infotest')
+    console.log(info)
+    info.innerHTML = '<div></div>'
+    for(let informacija of data_json){
+        msg = `<div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:400px;">${informacija.name}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:400px;">${informacija.location}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:185px;">${informacija.start}-${informacija.end}</div><div style="border: 1px solid black; text-align: center; width: 100%; display: inline-flex;  height: 50px; width:100px;"><button>Labot</button></div>`
+        info.innerHTML = info.innerHTML + msg
+    }
 }
 </script>
 {% endblock %}
