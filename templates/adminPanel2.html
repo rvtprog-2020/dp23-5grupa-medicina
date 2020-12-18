@@ -42,9 +42,14 @@
         </form>
     </div>
         <br><br>
-        <h3>Ievadiet ārsta vārdu un uzvārdu :</h3>
+        <h3>Ievadiet ārsta vārdu:</h3>
             <div class="adminpanel8">
                 <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet ārsta vārdu" id="arstavards" type="text" minlength="4" maxlength="20">
+            </div>
+        <br><br>
+        <h3>Ievadiet ārsta uzvārdu :</h3>
+            <div class="adminpanel8">
+                <input style="height: 30px; background: rgba(255, 233, 233, 0.2); border: 1px solid #9AB3F5; box-sizing: border-box; border-radius: 40px; width: 575px;" placeholder="Ievadiet ārsta uzvārdu" id="arstauzvards" type="text" minlength="4" maxlength="20">
             </div>
         <br><br>
         <!--Ārsta darba laiks-->
@@ -55,7 +60,7 @@
         <br><br>
         <!--POGA-->
         <div  class="form-action-buttons">
-            <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="Submit" value="Submit">Pievienot</button>
+            <button style="width: 120px;height: 40px;background-color: rgb(70, 128, 255);border: 1px solid rgb(27, 107, 255); border-radius: 5px;" type="Submit" value="Submit" onclick="add()">Pievienot</button>
         </div>
       </form>
   </tr>
@@ -63,27 +68,36 @@
 </div>
 <script src="/static/adminpanel2.js"></script>
 <script>
+getSlimnicas()
 function add(){
-    let hospitalnosaukums = document.getElementById("slimnicasnosaukums").value;
-    let hospitalproff = document.getElementById("arstaprofesija").value;
+    let hospitalNosaukums = document.getElementById("slimnica22").value;
+    let hospitalProff = document.getElementById("profesija").value;
     let hospitalWorkname = document.getElementById("arstavards").value;
     let hospitalWorktime = document.getElementById("arstalaiks").value;
-    console.log(hospitalnosaukums, hospitalproff, hospitalStart, hospitalEnd);
-    fetch('/arsts',{
+    let surname = document.getElementById("arstauzvards").value;
+    console.log(hospitalNosaukums, hospitalProff, hospitalWorkname, hospitalWorktime, surname);
+    fetch('/arstia',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({"hospital":hospitalnosaukums,"Specaialty":hospitalproff,"arstavards":hospitalWorkname,"arstalaiks":hospitalWorktime})        
+        body: JSON.stringify({"hospital":hospitalNosaukums,"Specaialty":hospitalProff,"arstavards":hospitalWorkname,"arstalaiks":hospitalWorktime,"arstauzvards":surname})        
     })
 alert("Paldies!\n dati tika pieņemti!\n Veiksmi darbā!")
 }
-getInfo()
-async function getInfo(){
-  let response = await fetch('/arsts')
+
+async function getSlimnicas(){
+  let response = await fetch('/adds')
   let data_json = await response.json()
   console.log(data_json)
-  
+
+  let option2 = document.getElementById("slimnica22")
+  option2.innerHTML = "<option><option>";
+
+    for(let slimnicasSkaits of data_json){
+        slimnica = `<option>${slimnicasSkaits.name}<option>`
+        option2.innerHTML = option2.innerHTML + slimnica
+    }
 }
 </script>
 {% endblock %}

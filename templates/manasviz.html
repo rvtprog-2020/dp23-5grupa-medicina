@@ -1,16 +1,16 @@
 {% extends 'layout.html' %}
 {% set active_page = 'vizites' %}
 {% block content %}
-<h1>Manas vizītes</h1>
-<div style="background-color: rgb(207, 207, 207);border-radius: 10px; padding-left:5px; padding-right:5px; padding-top:5px;">
+<h1><b>Manas vizītes</b></h1>
+<div style="background-color:#8dbaba;border-radius: 10px; padding-left:5px; padding-right:5px; padding-top:5px;">
     <table id="tabula" style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
         <tr style="border: 1px solid black; height: 40px;">
-          <th style="border: 1px solid black; text-align: center;">Vizītes ID</th>
-          <th style="border: 1px solid black; text-align: center;">Slimnīca</th>
-          <th style="border: 1px solid black; text-align: center;">Vizītes laiks</th>
-          <th style="border: 1px solid black; text-align: center;">Ārsts</th>
+          <th style="border: 1px solid black; text-align: center; width:190px;">Vizītes ID</th>
+          <th style="border: 1px solid black; text-align: center; width:164px;">Slimnīca</th>
+          <th style="border: 1px solid black; text-align: center; width:225px;">Vizītes laiks</th>
+          <th style="border: 1px solid black; text-align: center; width:102px;">Ārsts</th>
           <th style="border: 1px solid black; text-align: center;">Darbības joma</th>
-          <th style="border: 1px solid black; text-align: center;">Opcijas</th>
+          <th style="border: 1px solid black; text-align: center; width:245px;">Opcijas</th>
         <tr>
           <td id="info"></td>
           <td id="info2"></td>
@@ -56,7 +56,7 @@ async function getInfo(){
     console.log(info)
     info.innerHTML = '<div></div>'
   for(let informacija of data_json){
-        msgHTML1 = `<div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;  height: 50px; width:185px;">${informacija._id.$oid}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex;  height: 50px; width:166px;">${informacija.hospital}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:100px;">${informacija.date} ${informacija.time}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:120px;">${informacija.doctor}</div><div style="border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:166px;">${informacija.job}</div><div style="width:165.99px;border: 1px solid black; text-align: center; width: 16.6%; display: inline-flex; height: 50px; width:300px;"><button style="height: 30px; background: #7579E7; color: white; border-radius: 10px;" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="height: 30px; background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt</button><button style="height: 30px;">Drukāt</button></div>`
+        msgHTML1 = `<div class="manviz" style="height: 50px; width:190px;">${informacija._id.$oid}</div><div class="manviz" style="height: 50px; width:164px;">${informacija.hospital}</div><div class="manviz" style="height: 50px; width:225px;">${informacija.date} ${informacija.time}</div><div class="manviz" style="height: 50px; width:102px;">${informacija.doctor}</div><div class="manviz" style="height: 50px; width:173px;">${informacija.job}</div><div class="manviz"style="width:165.99px;border: 1px solid black; text-align: center; display: inline-flex; height: 50px; width:246px;"><button style="height: 30px; background: #7579E7; color: white; border-radius: 10px; float:left" onclick="editInfo('${informacija._id.$oid}')">Labot</button><button style="height: 30px; background: red; color: white;" onclick="deleteInfo('${informacija._id.$oid}')">Atcelt</button><button style="height: 30px;">Drukāt</button></div>`
         info.innerHTML = info.innerHTML + msgHTML1
     }
   }
