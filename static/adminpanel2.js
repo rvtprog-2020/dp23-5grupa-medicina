@@ -10,8 +10,8 @@ function onFormSubmit() {
 
 function readFormData() {
     let formData = {};
-    formData["slimnicasnosaukums"] = document.getElementById("slimnicasnosaukums").value;
-    formData["arstaprofesija"] = document.getElementById("arstaprofesija").value;
+    formData["slimnica22"] = document.getElementById("slimnica22").value;
+    formData["profesija"] = document.getElementById("profesija").value;
     formData["arstavards"] = document.getElementById("arstavards").value;
     formData["arstalaiks"] = document.getElementById("arstalaiks").value;
     return formData;
@@ -20,9 +20,9 @@ function insertNewRecord(data) {
     let table = document.getElementById("arstainfo11").getElementsByTagName('tbody')[0];
     let newRow = table.insertRow(table.length);
     cell1 = newRow.insertCell(0);
-    cell1.innerHTML = data.slimnicasnosaukums; 
+    cell1.innerHTML = data.slimnica22; 
     cell2 = newRow.insertCell(1);
-    cell2.innerHTML = data.arstaprofesija;
+    cell2.innerHTML = data.profesija;
     cell3 = newRow.insertCell(2);
     cell3.innerHTML = data.arstavards;
     cell4 = newRow.insertCell(3);
@@ -34,8 +34,8 @@ function insertNewRecord(data) {
 }
 
 function resetForm() {
-    document.getElementById("slimnicasnosaukums").value = "";
-    document.getElementById("arstaprofesija").value = "";
+    document.getElementById("slimnica22").value = "";
+    document.getElementById("profesija").value = "";
     document.getElementById("arstavards").value = "";
     document.getElementById("arstalaiks").value = "";
     selectedRow = null;
@@ -43,14 +43,14 @@ function resetForm() {
 
 function onEdit(td) {
     selectedRow = td.parentElement.parentElement;
-    document.getElementById("slimnicasnosaukums").value = selectedRow.cells[0].innerHTML;
-    document.getElementById("arstaprofesija").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("slimnica22").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("profesija").value = selectedRow.cells[1].innerHTML;
     document.getElementById("arstavards").value = selectedRow.cells[2].innerHTML;
     document.getElementById("arstalaiks").value = selectedRow.cells[3].innerHTML;
 }
 function updateRecord(formData) {
-    selectedRow.cells[0].innerHTML = formData.slimnicasnosaukums;
-    selectedRow.cells[1].innerHTML = formData.arstaprofesija;
+    selectedRow.cells[0].innerHTML = formData.slimnica22;
+    selectedRow.cells[1].innerHTML = formData.profesija;
     selectedRow.cells[2].innerHTML = formData.arstavards;
     selectedRow.cells[3].innerHTML = formData.arstalaiks;
 }
