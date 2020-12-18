@@ -30,7 +30,7 @@
         </div>
     <div class="middleline"></div>
     
-    <div class="navigation" style="background-color:#EEFBFB; height:1000px;">
+    <div class="navigation" style="background-color:#EEFBFB; height:auto; min-height:1000px;">
         <ul class="navigationUL">
 
                 <div class= "a1">
@@ -41,6 +41,12 @@
                 <div class= "a2">
                     <h6 {% if active_page == 'slimnicas'%} class="active" {% endif %}>
                         <a class="navbarTEXT"href='/slimnicas'>Slimnīcu saraksts</a>
+                    </h6>
+                </div>
+
+                <div class= "a2">
+                    <h6 {% if active_page == 'arsti'%} class="active" {% endif %}>
+                        <a class="navbarTEXT"href='/arsti'>Ārstu saraksts</a>
                     </h6>
                 </div>
 

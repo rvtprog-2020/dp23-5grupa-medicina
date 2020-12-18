@@ -27,7 +27,11 @@ arsts_db = db.arsts
 
 @app.route('/arsti')
 def arsti():
-    return render_template('arsti.html')
+    if 'username' in session:
+        if session['username'] == 'admin':
+            return render_template('arsti.html',username=session['username'], status = 'admin')
+        return render_template('arsti.html',username=session['username'], status = 'user')
+    return render_template('loginpage.html')
 
 @app.route('/arsti2', methods = ['GET','POST'])
 def arsti2():

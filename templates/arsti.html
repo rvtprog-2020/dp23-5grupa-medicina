@@ -1,7 +1,12 @@
 {% extends 'layout.html' %}
 {% set active_page = 'arsti' %}
 {% block content %}
+
+<h1><b>Ārstu saraksts</b></h1>
+<hr>
 <div id="arsti">lol</div>
+
+
 <script>
 getArsts()
 async function getArsts(){
@@ -13,7 +18,7 @@ async function getArsts(){
     console.log(info)
     info.innerHTML = '<div></div>'
   for(let informacija of data_json){
-        msgHTML = `<div>Vārds:${informacija.name}</div><div style="padding-left:10px;"> Uzvārds:${informacija.surname}</div>`
+        msgHTML = `<div style="padding-left:10px;"><b>Vārds:</b> ${informacija.name}</div><div style="padding-left:10px;"><b>Uzvārds:</b> ${informacija.surname}</div><div style="padding-left:10px;"><b>Slimnīca:</b> ${informacija.hospital}</div><div style="padding-left:10px;"><b>Specialitāte:</b> ${informacija.job}</div><hr>`
         info.innerHTML = info.innerHTML + msgHTML
     }
   }
