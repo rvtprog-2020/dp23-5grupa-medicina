@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Manas vizītes</h1>
 <div style="background-color: rgb(207, 207, 207);border-radius: 10px; padding-left:5px; padding-right:5px; padding-top:5px;">
-    <table style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
+    <table id="tabula" style="width: 1100px; border: 1px solid black; text-align: center; margin-top: 10px;">
         <tr style="border: 1px solid black; height: 40px;">
           <th style="border: 1px solid black; text-align: center;">Vizītes ID</th>
           <th style="border: 1px solid black; text-align: center;">Slimnīca</th>
@@ -11,15 +11,6 @@
           <th style="border: 1px solid black; text-align: center;">Ārsts</th>
           <th style="border: 1px solid black; text-align: center;">Darbības joma</th>
           <th style="border: 1px solid black; text-align: center;">Opcijas</th>
-        </tr>
-        <tr style="height: 40px;" id="pirmais">
-          <td style="border: 1px solid black; text-align: center;">3942823478</td>
-          <td style="border: 1px solid black; text-align: center;">Rīgas Stradiņa</td>
-          <td style="border: 1px solid black; text-align: center;">21.05.2020. 17:55</td>
-          <td style="border: 1px solid black; text-align: center;">Arvis Ceirulis</td>
-          <td style="border: 1px solid black; text-align: center;">Programmētājs</td>
-          <td style="border: 1px solid black; text-align: center;"><button type="text" style="background: red; color: white; border: black; width: 30px; height: 30px;"></button></td>
-        </tr>
         <tr>
           <td id="info"></td>
           <td id="info2"></td>
@@ -28,12 +19,13 @@
           <td id="info5"></td>
           <td id="info6"></td>
         </tr>
-      </table>
+    </table>
       <table id="infotest"></table>
-      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" >Drukāt</button>
+      <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="tabuluDrukat('infotest')">Drukāt</button>
       <button style="margin-left: 10px; border-radius: 10px; background: #7579E7; color: white; width: 75px; margin-top: 10px; margin-bottom: 10px;" onclick="labot()">Labot</button>
 </div>
-<script>
+<script> 
+
   function labot(){
     let tableDate = document.getElementById('table_date')
     tableDate.innerHTML = "<input id='message'></input><button onclick='izlabot()'>Labot</button>"
@@ -108,4 +100,28 @@ async function printInfo(id){
   })
 }
 </script>
+<script>
+  function tabuluDrukat(infotest, filename = ''){
+      var links;
+      var dataType = 'application/vnd.ms-excel';
+      var tableSelect = document.getElementById(infotest);
+      var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+      // faila nosaukums
+      filename = filename?filename+'.xls':'Ārstu_vizītes.xls';
+      // 
+      links = document.createElement("a");
+      document.body.appendChild(links);
+      if(navigator.msSaveOrOpenBlob){
+          var blob = new Blob(['\ufeff', tableHTML], {
+              type: dataType
+          });
+          navigator.msSaveOrOpenBlob( blob, filename);
+      }else{
+          links.href = 'data:' + dataType + ', ' + tableHTML;
+          links.download = filename;
+          links.click();
+      }
+  }
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 {% endblock %}
