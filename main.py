@@ -51,19 +51,33 @@ def arstiAdd():
     else:
         return{"Error":"Arsts nav pievienots!"}
 
-@app.route('/add', methods = ['GET','POST'])	
-def add():	
+@app.route('/add', methods = ['POST'])	
+def add(id):	
     if request.method == 'POST':	
         dati = request.json	
         add_db.insert_one({"name":dati['name'], "location":dati['location'], "start":dati['start'], "end":dati['end']})	
         return {"messange":"New hospital created!"}	
     else:
-        add_db.find_one()
         return {"error":"Method or content type not supported!"} 
 
-@app.route('/adds', methods = ['GET','POST'])
-def addID():
+@app.route('/edit/<string:id>', methods = ['POST'])	
+def edit(id):	
+    if request.method == 'POST':	
+        dati = request.json	
+        add_db.update(add_db.find_one(ObjectId(id)), {"name":dati['name'], "location":dati['location'], "start":dati['start'], "end":dati['end']})
+        return {"messange":"New hospital created!"}	
+    else:
+        return {"error":"Method or content type not supported!"}
+@app.route('/adds', methods = ['GET'])
+def GetADD():
     add_data = add_db.find()
+    if add_data:
+        return dumps(add_data)
+    else:
+        return {"error":"No hospital in DB"}
+@app.route('/adds/<string:id>', methods = ['GET'])
+def addID(id):
+    add_data = add_db.find_one(ObjectId(id))
     if add_data:
         return dumps(add_data)
     else:
@@ -273,4 +287,4 @@ def createUser():
 
 
 
-app.run(host="0.0.0.0", port=80, debug=True)
+app.run(host="0.0.0.0", port=8080, debug=True)
